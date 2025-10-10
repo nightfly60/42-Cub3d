@@ -1,4 +1,4 @@
-////////////////////////////////////////// //// 42-Minishell - Elena et Anas ///// //////////////////////////////////////////
+////////////////////////////////////////// //// 42-Cub3d - Elena et Anas ///// //////////////////////////////////////////
 
 Regles a suivre:
 
@@ -8,7 +8,7 @@ Regles a suivre:
     Commenter chaque fonction inconnue en haut /comment/
     Normer directement chaque fichier: 25 lignes max, nom de variable/fonction clairs et code lisible
     Respecter un rangement strict et propre du projet
-    Tout doit etre lie a la structure minishell et respecter un rangement strict et propre
+    Tout doit etre lie a la structure Cub3d et respecter un rangement strict et propre
     Commit uniquement le travail important sur la branche dev
     Commit clairs, precis, expliquant le travail effectue
     Merge sur dev une fois sur, tester avec tout le reste des fonctionnalite, puis valider sur main si tout est bon
