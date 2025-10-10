@@ -1,0 +1,4 @@
+*.o
+README.md
+main.c
+cub3d
