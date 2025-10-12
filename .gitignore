@@ -1,3 +1,5 @@
 *.o
 README.md
-cub3d
+cub3D
+obj
+mlx_linux
