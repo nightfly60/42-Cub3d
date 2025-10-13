@@ -6,7 +6,7 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 14:44:14 by edurance          #+#    #+#             */
-/*   Updated: 2025/10/13 11:25:21 by edurance         ###   ########.fr       */
+/*   Updated: 2025/10/13 12:22:54 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,14 @@
 # include <fcntl.h>
 # include <stdio.h>
 
+typedef struct s_ply
+{
+	float	posX;
+	float	posY;
+	float	dirX;
+	float	dirY;
+}			t_ply;
+
 typedef struct s_cub
 {
 	void	*mlx;
@@ -31,6 +39,7 @@ typedef struct s_cub
 	int		mapcub_size;
 	int		map_y;
 	int		map_x;
+	t_ply	*player;
 }			t_cub;
 
 typedef struct s_data
@@ -49,5 +58,8 @@ void		create_map(t_cub *cube, char *mapfile);
 
 /*utils*/
 int			ft_color(int r, int g, int b);
+
+/*player*/
+int			init_player_data(t_cub *cube);
 
 #endif

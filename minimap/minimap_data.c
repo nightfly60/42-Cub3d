@@ -6,7 +6,7 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 11:12:12 by edurance          #+#    #+#             */
-/*   Updated: 2025/10/13 11:15:05 by edurance         ###   ########.fr       */
+/*   Updated: 2025/10/13 12:12:39 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	create_map(t_cub *cube, char *mapfile)
 	line = get_next_line(fd);
 	while (line)
 	{
-		line[ft_strlen(line)] = 0;
+		line[ft_strlen(line) - 1] = 0;
 		cube->map[i] = line;
 		i++;
 		line = get_next_line(fd);
