@@ -6,35 +6,11 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 14:41:41 by edurance          #+#    #+#             */
-/*   Updated: 2025/10/12 17:23:06 by edurance         ###   ########.fr       */
+/*   Updated: 2025/10/13 11:18:48 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-static void	create_map(t_cub *cube, char *mapfile)
-{
-	int		fd;
-	char	*line;
-	int		i;
-
-	line = "";
-	i = 0;
-	cube->map = malloc(sizeof(char *) * 50); // HARDCODE
-	if (!cube->map)
-		return ;
-	cube->longest_line = 0;
-	fd = open(mapfile, O_RDONLY);
-	while (line)
-	{
-		line = get_next_line(fd);
-		cube->map[i] = line;
-		if (cube->longest_line < (int)ft_strlen(line))
-			cube->longest_line = (int)ft_strlen(line);
-		i++;
-	}
-	close(fd);
-}
 
 static void	init_game(t_cub *cube, char **av)
 {
@@ -43,34 +19,28 @@ static void	init_game(t_cub *cube, char **av)
 	cube->mlx_window = mlx_new_window(cube->mlx, SIZE_X, SIZE_Y, "minimap");
 }
 
-static int	ft_color(int r, int g, int b)
-{
-	return ((r << 16) | (g << 8) | b);
-}
-
-void	*create_image(t_cub *cube, int size_x, int size_y)
+void	*create_image(t_cub *cube)
 {
 	t_data	image;
 	char	*dst;
 	int		x;
 	int		y;
 
-	image.img = mlx_new_image(cube->mlx, size_x * 105, size_y * 105);
+	get_mapdata_display(cube);
+	image.img = mlx_new_image(cube->mlx, cube->longest_line * cube->mapcub_size, cube->nb_lines * cube->mapcub_size);
 	image.addr = mlx_get_data_addr(image.img, &image.bits_per_pixel,
 			&image.line_length, &image.endian);
 	y = 0;
-	while (y < size_y * 105)
+	while (y < cube->nb_lines * cube->mapcub_size)
 	{
 		x = 0;
-		while (x < size_x * 105)
+		while (x < cube->longest_line * cube->mapcub_size)
 		{
 			dst = image.addr + (y * image.line_length + x
 					* (image.bits_per_pixel / 8));
-			if (cube->map[y / 105][x / 105] == '1')
+			if (cube->map[y / cube->mapcub_size][x / cube->mapcub_size] == '1')
 				*(unsigned int *)dst = ft_color(255, 0, 0);
-			else if (cube->map[y / 105][x / 105] == '\n')
-				*(unsigned int *)dst = ft_color(255, 255, 255);
-			else
+			else if (cube->map[y / cube->mapcub_size][x / cube->mapcub_size] == '0')
 				*(unsigned int *)dst = ft_color(0, 255, 0);
 			x++;
 		}
@@ -92,8 +62,8 @@ int	main(int ac, char **av)
 	init_game(pacoub3d, av);
 	while (1)
 	{
-		image = create_image(pacoub3d, pacoub3d->longest_line, 5);
-		mlx_put_image_to_window(pacoub3d->mlx, pacoub3d->mlx_window, image, 0, 0);
+		image = create_image(pacoub3d);
+		mlx_put_image_to_window(pacoub3d->mlx, pacoub3d->mlx_window, image, pacoub3d->map_x, pacoub3d->map_y);
 		mlx_destroy_image(pacoub3d->mlx, image);
 	}
 	mlx_loop(pacoub3d->mlx);

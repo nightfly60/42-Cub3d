@@ -6,7 +6,7 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 14:44:14 by edurance          #+#    #+#             */
-/*   Updated: 2025/10/12 17:21:07 by edurance         ###   ########.fr       */
+/*   Updated: 2025/10/13 11:19:25 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 
 # include "../libft/include/libft.h"
 # include "../mlx_linux/mlx.h"
-# include <stdio.h>
 # include <fcntl.h>
+# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 
@@ -29,6 +29,10 @@ typedef struct s_cub
 	void	*mlx_window;
 	char	**map;
 	int		longest_line;
+	int		nb_lines;
+	int		mapcub_size;
+	int		map_y;
+	int		map_x;
 }			t_cub;
 
 typedef struct s_data
@@ -39,5 +43,13 @@ typedef struct s_data
 	int		line_length;
 	int		endian;
 }			t_data;
+
+/*minimap*/
+int			get_mapsize(char *mapfile, t_cub *cub);
+void		get_mapdata_display(t_cub *cub);
+void		create_map(t_cub *cube, char *mapfile);
+
+/*utils*/
+int			ft_color(int r, int g, int b);
 
 #endif

@@ -5,7 +5,9 @@ LIBFT_DIR = libft
 OBJDIR = obj
 LIBFT := $(LIBFT_DIR)/libft.a
 
-FILES = main.c
+MINIMAP_FILES = minimap/minimap_data.c
+
+UTILS_FILES = utils/ft_color.c
 
 LIBFT_SRCS := libft/ft_atoi.c libft/ft_bzero.c libft/ft_calloc.c libft/ft_isalnum.c libft/ft_isalpha.c libft/ft_isascii.c \
 			libft/ft_isdigit.c libft/ft_isprint.c libft/ft_itoa.c libft/ft_memchr.c libft/ft_memcmp.c libft/ft_memcpy.c \
@@ -21,6 +23,8 @@ LIBFT_SRCS := libft/ft_atoi.c libft/ft_bzero.c libft/ft_calloc.c libft/ft_isalnu
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -g3
 OBJ = $(patsubst %.c, $(OBJDIR)/%.o, $(FILES))
+
+FILES = main.c $(MINIMAP_FILES) $(UTILS_FILES)
 
 INCLUDES = includes
 INCLUDE_FILES = includes/cub3d.h
