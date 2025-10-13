@@ -6,7 +6,7 @@
 /*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 14:44:14 by edurance          #+#    #+#             */
-/*   Updated: 2025/10/13 14:49:08 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/10/13 16:12:58 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,14 @@ typedef struct s_ply
 	float	posY;
 	float	dirX;
 	float	dirY;
+	int		mapX;
+	int		mapY;
+	int		stepX;
+	int		stepY;
+	float	sideDistX;
+	float	sideDistY;
+	float	deltaDistX;
+	float	deltaDistY;
 }			t_ply;
 
 typedef struct s_cub
@@ -68,5 +76,8 @@ int			init_player_data(t_cub *cube);
 /*key hook*/
 int			ft_key_hook(t_win_list *win, int (*funct)(), void *param);
 int			key_hooks(int key, t_cub *cube);
+
+/*DDA : Digital Differential Analysis*/
+void		init_dda_datas(t_ply *ply);
 
 #endif
