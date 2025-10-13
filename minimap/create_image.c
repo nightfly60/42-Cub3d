@@ -6,7 +6,7 @@
 /*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 12:41:04 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/10/13 12:46:03 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/10/13 15:04:55 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,41 @@ static void	map_background(t_cub *cube, t_data *image)
 	}
 }
 
-static void	map_player(t_cub *cube, t_data *image)
+static void	put_pixel(t_data *data, int x, int y, int color)
 {
-	t_ply	*ply;
+	char	*dst;
 
-	ply = cube->player;
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
 }
 
-void	*create_image(t_cub *cube)
+static void	map_player(t_cub *cube, t_data *image, int ray)
+{
+	int	x;
+	int	y;
+	int	x_origin;
+	int	y_origin;
+	int	dist;
+
+	x_origin = (int)(cube->player->posX * cube->mapcub_size);
+	y_origin = (int)(cube->player->posY * cube->mapcub_size);
+	x = (x_origin - ray);
+	while (x <= x_origin + ray)
+	{
+		y = y_origin - ray;
+		while (y <= y_origin + ray)
+		{
+			dist = (x - x_origin) * (x - x_origin) + (y - y_origin) * (y
+					- y_origin);
+			if (dist < ray * ray)
+				put_pixel(image, x, y, ft_color(255, 255, 255));
+			y++;
+		}
+		x++;
+	}
+}
+
+int	display_minimap(t_cub *cube)
 {
 	t_data	image;
 
@@ -55,5 +82,11 @@ void	*create_image(t_cub *cube)
 	image.addr = mlx_get_data_addr(image.img, &image.bits_per_pixel,
 			&image.line_length, &image.endian);
 	map_background(cube, &image);
-	return (image.img);
+	map_player(cube, &image, 10);
+	mlx_put_image_to_window(cube->mlx, cube->mlx_window, image.img, cube->map_x,
+		cube->map_y);
+	mlx_destroy_image(cube->mlx, image.img);
+	// printf("posx = %f posy = %f angX = %f angY = %f\n", cube->player->posX,
+	// 	cube->player->posY, cube->player->dirX, cube->player->dirY);
+	return (1);
 }

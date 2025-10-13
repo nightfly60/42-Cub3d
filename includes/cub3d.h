@@ -6,7 +6,7 @@
 /*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 14:44:14 by edurance          #+#    #+#             */
-/*   Updated: 2025/10/13 12:41:32 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/10/13 14:49:08 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@
 
 # include "../libft/include/libft.h"
 # include "../mlx_linux/mlx.h"
+# include "../mlx_linux/mlx_int.h"
 # include <fcntl.h>
+# include <math.h>
 # include <stdio.h>
 
 typedef struct s_ply
@@ -55,12 +57,16 @@ typedef struct s_data
 int			get_mapsize(char *mapfile, t_cub *cub);
 void		get_mapdata_display(t_cub *cub);
 void		create_map(t_cub *cube, char *mapfile);
-void		*create_image(t_cub *cube);
+int			display_minimap(t_cub *cube);
 
 /*utils*/
 int			ft_color(int r, int g, int b);
 
 /*player*/
 int			init_player_data(t_cub *cube);
+
+/*key hook*/
+int			ft_key_hook(t_win_list *win, int (*funct)(), void *param);
+int			key_hooks(int key, t_cub *cube);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 14:41:41 by edurance          #+#    #+#             */
-/*   Updated: 2025/10/13 12:46:45 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/10/13 14:52:53 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ static void	init_game(t_cub *cube, char **av)
 	cube->mlx_window = mlx_new_window(cube->mlx, SIZE_X, SIZE_Y, "minimap");
 	cube->player = malloc(sizeof(t_ply));
 	init_player_data(cube);
+	mlx_hook(cube->mlx_window, KeyPress, KeyPressMask, key_hooks, cube);
 }
 
 int	main(int ac, char **av)
 {
 	t_cub	*cube;
-	void	*image;
 
 	if (ac != 2)
 		return (1);
@@ -32,14 +32,7 @@ int	main(int ac, char **av)
 	if (!cube)
 		return (0);
 	init_game(cube, av);
-	while (1)
-	{
-		image = create_image(cube);
-		mlx_put_image_to_window(cube->mlx, cube->mlx_window, image, cube->map_x,
-			cube->map_y);
-		mlx_destroy_image(cube->mlx, image);
-		printf("posx = %f posy = %f angX = %f angY = %f\n", cube->player->posX, cube->player->posY, cube->player->dirX, cube->player->dirY);
-	}
+	mlx_loop_hook(cube->mlx, display_minimap, cube);
 	mlx_loop(cube->mlx);
 	free(cube);
 	return (0);
