@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 14:44:14 by edurance          #+#    #+#             */
-/*   Updated: 2025/10/13 12:22:54 by edurance         ###   ########.fr       */
+/*   Updated: 2025/10/13 12:41:32 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct s_data
 int			get_mapsize(char *mapfile, t_cub *cub);
 void		get_mapdata_display(t_cub *cub);
 void		create_map(t_cub *cube, char *mapfile);
+void		*create_image(t_cub *cube);
 
 /*utils*/
 int			ft_color(int r, int g, int b);
