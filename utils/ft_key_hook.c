@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_key_hook.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 14:26:37 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/10/14 13:10:30 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/10/14 14:43:49 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,26 @@ int	ft_key_hook(t_win_list *win, int (*funct)(), void *param)
 int	key_hooks(int key, t_cub *cube)
 {
 	t_ply	*ply;
+	float	oldDirX;
+	float	angle;
 
 	ply = cube->player;
+	oldDirX = ply->dirX;
+	angle = 0.01f;
 	if (key == XK_w)
 	{
 		if (cube->map[(int)(ply->posY + -0.1f)][(int)ply->posX] != '1')
 			ply->posY += -0.1f;
 	}
-	else if (key == XK_Left)
-	{
-		ply->dirX += 0.1f;
-		ply->dirY += -0.1f;
-	}
 	else if (key == XK_Right)
 	{
-		ply->dirX += -0.1f;
-		ply->dirY += 0.1f;
+		ply->dirX = oldDirX * cosf(angle) - ply->dirY * sinf(angle);
+		ply->dirY = oldDirX * sinf(angle) + ply->dirY * cosf(angle);
+	}
+	else if (key == XK_Left)
+	{
+		ply->dirX = oldDirX * cosf(angle * -1) - ply->dirY * sinf(angle * -1);
+		ply->dirY = oldDirX * sinf(angle * -1) + ply->dirY * cosf(angle * -1);
 	}
 	return (0);
 }

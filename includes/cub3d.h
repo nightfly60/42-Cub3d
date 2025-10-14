@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 14:44:14 by edurance          #+#    #+#             */
-/*   Updated: 2025/10/14 12:50:13 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/10/14 15:04:08 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ typedef struct s_ply
 	float	posY;
 	float	dirX;
 	float	dirY;
+}			t_ply;
+
+typedef struct s_ray
+{
 	int		mapX;
 	int		mapY;
 	int		stepX;
@@ -39,7 +43,7 @@ typedef struct s_ply
 	float	deltaDistX;
 	float	deltaDistY;
 	int		side;
-}			t_ply;
+}			t_ray;
 
 typedef struct s_cub
 {
@@ -82,7 +86,6 @@ int			ft_key_hook(t_win_list *win, int (*funct)(), void *param);
 int			key_hooks(int key, t_cub *cube);
 
 /*DDA : Digital Differential Analysis*/
-void		init_dda_datas(t_ply *ply);
 void		next_wall_dist(t_cub *cube, t_data *image);
 
 #endif
