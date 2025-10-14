@@ -6,15 +6,15 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 14:44:14 by edurance          #+#    #+#             */
-/*   Updated: 2025/10/14 15:04:08 by edurance         ###   ########.fr       */
+/*   Updated: 2025/10/14 15:56:09 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# define SIZE_X 800
-# define SIZE_Y 600
+# define SIZE_X 1920
+# define SIZE_Y 1080
 
 # include "../libft/include/libft.h"
 # include "../mlx_linux/mlx.h"
@@ -34,6 +34,9 @@ typedef struct s_ply
 
 typedef struct s_ray
 {
+	float	rayDirX;
+	float	rayDirY;
+	float	cameraX;
 	int		mapX;
 	int		mapY;
 	int		stepX;
@@ -42,6 +45,8 @@ typedef struct s_ray
 	float	sideDistY;
 	float	deltaDistX;
 	float	deltaDistY;
+	float	planeX;
+	float	planeY;
 	int		side;
 }			t_ray;
 
@@ -86,6 +91,6 @@ int			ft_key_hook(t_win_list *win, int (*funct)(), void *param);
 int			key_hooks(int key, t_cub *cube);
 
 /*DDA : Digital Differential Analysis*/
-void		next_wall_dist(t_cub *cube, t_data *image);
+void		launch_rays(t_cub *cube, t_data *image);
 
 #endif

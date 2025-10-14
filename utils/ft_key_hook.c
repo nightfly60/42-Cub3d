@@ -6,7 +6,7 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 14:26:37 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/10/14 14:43:49 by edurance         ###   ########.fr       */
+/*   Updated: 2025/10/14 16:05:03 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	key_hooks(int key, t_cub *cube)
 
 	ply = cube->player;
 	oldDirX = ply->dirX;
-	angle = 0.01f;
+	angle = 0.02f;
 	if (key == XK_w)
 	{
 		if (cube->map[(int)(ply->posY + -0.1f)][(int)ply->posX] != '1')
@@ -43,6 +43,10 @@ int	key_hooks(int key, t_cub *cube)
 	{
 		ply->dirX = oldDirX * cosf(angle * -1) - ply->dirY * sinf(angle * -1);
 		ply->dirY = oldDirX * sinf(angle * -1) + ply->dirY * cosf(angle * -1);
+	}
+	else if (key == XK_Escape)
+	{
+		exit(0);
 	}
 	return (0);
 }

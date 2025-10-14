@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_image.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 12:41:04 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/10/14 13:11:11 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/10/14 15:58:47 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,12 +83,9 @@ int	display_minimap(t_cub *cube)
 			&image.line_length, &image.endian);
 	map_background(cube, &image);
 	map_player(cube, &image, 10);
-	next_wall_dist(cube, &image);
+	launch_rays(cube, &image);
 	mlx_put_image_to_window(cube->mlx, cube->mlx_window, image.img, cube->map_x,
 		cube->map_y);
 	mlx_destroy_image(cube->mlx, image.img);
-	printf("DirX -> %f || DirY -> %f\n", cube->player->dirX, cube->player->dirY);
-	// printf("posx = %f posy = %f angX = %f angY = %f\n", cube->player->posX,
-	// 	cube->player->posY, cube->player->dirX, cube->player->dirY);
 	return (1);
 }
