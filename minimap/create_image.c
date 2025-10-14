@@ -6,7 +6,7 @@
 /*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 12:41:04 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/10/13 15:04:55 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/10/14 10:47:21 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ int	display_minimap(t_cub *cube)
 	mlx_put_image_to_window(cube->mlx, cube->mlx_window, image.img, cube->map_x,
 		cube->map_y);
 	mlx_destroy_image(cube->mlx, image.img);
+	next_wall_dist(cube);
 	// printf("posx = %f posy = %f angX = %f angY = %f\n", cube->player->posX,
 	// 	cube->player->posY, cube->player->dirX, cube->player->dirY);
 	return (1);

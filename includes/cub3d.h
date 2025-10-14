@@ -6,7 +6,7 @@
 /*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 14:44:14 by edurance          #+#    #+#             */
-/*   Updated: 2025/10/13 16:12:58 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/10/14 10:47:11 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include "../mlx_linux/mlx.h"
 # include "../mlx_linux/mlx_int.h"
 # include <fcntl.h>
+# include <float.h>
 # include <math.h>
 # include <stdio.h>
 
@@ -79,5 +80,6 @@ int			key_hooks(int key, t_cub *cube);
 
 /*DDA : Digital Differential Analysis*/
 void		init_dda_datas(t_ply *ply);
+void		next_wall_dist(t_cub *cube);
 
 #endif

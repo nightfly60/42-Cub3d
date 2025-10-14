@@ -6,7 +6,7 @@
 /*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 11:47:53 by edurance          #+#    #+#             */
-/*   Updated: 2025/10/13 15:39:37 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/10/14 10:27:53 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	player_angle(t_cub *cube, char c)
 	if (c == 'N')
 	{
 		cube->player->dirX = 0.0f;
-		cube->player->dirY = 1.0f;
+		cube->player->dirY = -1.0f;
 	}
 	else if (c == 'W')
 	{
@@ -32,7 +32,7 @@ static void	player_angle(t_cub *cube, char c)
 	else if (c == 'S')
 	{
 		cube->player->dirX = 0.0f;
-		cube->player->dirY = -1.0f;
+		cube->player->dirY = 1.0f;
 	}
 }
 

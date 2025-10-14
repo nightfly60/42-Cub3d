@@ -5,7 +5,7 @@ LIBFT_DIR = libft
 OBJDIR = obj
 LIBFT := $(LIBFT_DIR)/libft.a
 
-MINIMAP_FILES = minimap/minimap_data.c minimap/position_data.c minimap/create_image.c
+MINIMAP_FILES = minimap/minimap_data.c minimap/position_data.c minimap/create_image.c minimap/update_player_data.c
 
 UTILS_FILES = utils/ft_color.c utils/ft_key_hook.c
 

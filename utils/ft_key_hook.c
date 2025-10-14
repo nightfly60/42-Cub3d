@@ -6,7 +6,7 @@
 /*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 14:26:37 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/10/13 15:03:38 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/10/14 11:31:56 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,13 @@ int	ft_key_hook(t_win_list *win, int (*funct)(), void *param)
 
 int	key_hooks(int key, t_cub *cube)
 {
+	t_ply	*ply;
+
+	ply = cube->player;
 	if (key == XK_w)
 	{
-		cube->player->posX += 0.1f;
+		if (cube->map[(int)(ply->posY + -0.1f)][(int)ply->posX] != '1')
+			ply->posY += -0.1f;
 	}
 	return (0);
 }
