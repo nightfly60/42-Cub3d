@@ -6,7 +6,7 @@
 /*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 14:26:37 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/10/14 11:31:56 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/10/14 13:10:30 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,16 @@ int	key_hooks(int key, t_cub *cube)
 	{
 		if (cube->map[(int)(ply->posY + -0.1f)][(int)ply->posX] != '1')
 			ply->posY += -0.1f;
+	}
+	else if (key == XK_Left)
+	{
+		ply->dirX += 0.1f;
+		ply->dirY += -0.1f;
+	}
+	else if (key == XK_Right)
+	{
+		ply->dirX += -0.1f;
+		ply->dirY += 0.1f;
 	}
 	return (0);
 }

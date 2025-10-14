@@ -6,7 +6,7 @@
 /*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 15:40:18 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/10/14 11:35:53 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/10/14 12:56:18 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,27 @@ void	init_dda_datas(t_ply *ply)
 	// printf("posx = %f posy = %f angX = %f angY = %f\n", ply->posX, ply->posY, ply->dirX, ply->dirY);
 }
 
-void	next_wall_dist(t_cub *cube)
+static void	display_ray(t_cub *cube, t_data *image)
+{
+	float	dist;
+	float	endLine[2];
+	float	startLine[2];
+
+	if (!cube->player->side)
+		dist = cube->player->sideDistX - cube->player->deltaDistX;
+	else
+		dist = cube->player->sideDistY - cube->player->deltaDistY;
+	endLine[0] = (cube->player->posX + dist * cube->player->dirX) * cube->mapcub_size;
+	endLine[1] = (cube->player->posY + dist * cube->player->dirY) * cube->mapcub_size;
+	startLine[0] = cube->player->posX * cube->mapcub_size;
+	startLine[1] = cube->player->posY * cube->mapcub_size;
+	ft_drawline(startLine, endLine, image);
+}
+
+void	next_wall_dist(t_cub *cube, t_data *image)
 {
 	int		wall;
 	t_ply	*ply;
-	int		side;
 
 	ply = cube->player;
 	init_dda_datas(ply);
@@ -71,15 +87,16 @@ void	next_wall_dist(t_cub *cube)
 		{
 			ply->sideDistX = ply->sideDistX + ply->deltaDistX;
 			ply->mapX += ply->stepX;
-			side = 0;
+			ply->side = 0;
 		}
 		else
 		{
 			ply->sideDistY += ply->deltaDistY;
 			ply->mapY += ply->stepY;
-			side = 1;
+			ply->side = 1;
 		}
 		if (cube->map[ply->mapY][ply->mapX] == '1')
 			wall = 1;
 	}
+	display_ray(cube, image);
 }

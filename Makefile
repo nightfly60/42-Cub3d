@@ -7,7 +7,7 @@ LIBFT := $(LIBFT_DIR)/libft.a
 
 MINIMAP_FILES = minimap/minimap_data.c minimap/position_data.c minimap/create_image.c minimap/update_player_data.c
 
-UTILS_FILES = utils/ft_color.c utils/ft_key_hook.c
+UTILS_FILES = utils/ft_color.c utils/ft_key_hook.c utils/ft_drawline.c
 
 LIBFT_SRCS := libft/ft_atoi.c libft/ft_bzero.c libft/ft_calloc.c libft/ft_isalnum.c libft/ft_isalpha.c libft/ft_isascii.c \
 			libft/ft_isdigit.c libft/ft_isprint.c libft/ft_itoa.c libft/ft_memchr.c libft/ft_memcmp.c libft/ft_memcpy.c \
