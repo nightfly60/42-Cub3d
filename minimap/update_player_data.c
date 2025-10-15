@@ -6,7 +6,7 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 15:40:18 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/10/15 15:16:22 by edurance         ###   ########.fr       */
+/*   Updated: 2025/10/15 16:44:21 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,21 +62,20 @@ static void	init_dda_datas(t_ply *ply, t_ray *ray)
 /*Affiche un rayon sur la minimap*/
 static void	display_ray(t_cub *cube, t_data *image, t_ray *ray)
 {
-	float	dist;
 	float	end_line[2];
 	float	start_line[2];
 
 	if (!ray->side)
-		dist = ray->sidedist_x - ray->deltadist_x;
+		ray->perp_wall_dist = ray->sidedist_x - ray->deltadist_x;
 	else
-		dist = ray->sidedist_y - ray->deltadist_y;
-	end_line[0] = (cube->player->pos_x + dist * ray->ray_dir_x)
+		ray->perp_wall_dist = ray->sidedist_y - ray->deltadist_y;
+	end_line[0] = (cube->player->pos_x + ray->perp_wall_dist * ray->ray_dir_x)
 		* cube->mapcub_size;
-	end_line[1] = (cube->player->pos_y + dist * ray->ray_dir_y)
+	end_line[1] = (cube->player->pos_y + ray->perp_wall_dist * ray->ray_dir_y)
 		* cube->mapcub_size;
 	start_line[0] = cube->player->pos_x * cube->mapcub_size;
 	start_line[1] = cube->player->pos_y * cube->mapcub_size;
-	ft_drawline(start_line, end_line, image);
+	ft_drawline(start_line, end_line, image, ft_color(0, 0, 255));
 }
 
 /*Fonction qui applique le DDA et donc la distance entre le player
@@ -108,7 +107,7 @@ static void	next_wall_dist(t_cub *cube, t_data *image, t_ray *ray)
 }
 
 /*Envoie tous les rayons de la FOV du joueur*/
-void	launch_rays(t_cub *cube, t_data *image)
+void	launch_rays(t_cub *cube, t_data *image_minimap, t_data *image_game)
 {
 	int		i;
 	t_ray	ray;
@@ -121,7 +120,9 @@ void	launch_rays(t_cub *cube, t_data *image)
 		ray.camera_x = 2 * i / (float)SIZE_X - 1.0f;
 		ray.ray_dir_x = cube->player->dir_x + ray.plane_x * ray.camera_x;
 		ray.ray_dir_y = cube->player->dir_y + ray.plane_y * ray.camera_x;
-		next_wall_dist(cube, image, &ray);
+		next_wall_dist(cube, image_minimap, &ray);
+		ray.line_height = (int)(SIZE_Y / ray.perp_wall_dist);
+		display_fisheye(&ray, image_game, i);
 		i++;
 	}
 }

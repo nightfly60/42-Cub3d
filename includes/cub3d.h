@@ -6,7 +6,7 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 14:44:14 by edurance          #+#    #+#             */
-/*   Updated: 2025/10/15 15:07:22 by edurance         ###   ########.fr       */
+/*   Updated: 2025/10/15 16:47:27 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 # define CUB3D_H
 
 # ifndef SIZE_X
-#  define SIZE_X 1920
+#  define SIZE_X 1228
 # endif
 
 # ifndef SIZE_Y
-#  define SIZE_Y 1080
+#  define SIZE_Y 921
 # endif
 
 # ifndef M_PI
@@ -56,7 +56,9 @@ typedef struct s_ray
 	float	deltadist_y;
 	float	plane_x;
 	float	plane_y;
+	float	perp_wall_dist;
 	int		side;
+	int		line_height;
 }			t_ray;
 
 typedef struct s_data
@@ -71,8 +73,10 @@ typedef struct s_data
 typedef struct s_cub
 {
 	void	*mlx;
-	void	*mlx_window;
-	void	*img;
+	void	*mlx_window_minimap;
+	void	*mlx_window_game;
+	void	*img_minimap;
+	void	*img_game;
 	char	**map;
 	int		longest_line;
 	int		nb_lines;
@@ -86,13 +90,14 @@ typedef struct s_cub
 int			get_mapsize(char *mapfile, t_cub *cub);
 void		get_mapdata_display(t_cub *cub);
 void		create_map(t_cub *cube, char *mapfile);
-int			display_minimap(t_cub *cube);
-
+void		map_background(t_cub *cube, t_data *image);
+void		map_player(t_cub *cube, t_data *image, int ray);
 /*utils*/
 int			ft_color(int r, int g, int b);
 void		put_pixel(t_data *data, int x, int y, int color);
-void		ft_drawline(float *a, float *b, t_data *image);
+void		ft_drawline(float *a, float *b, t_data *image, int color);
 void		exit_game(t_cub *cub);
+int			close_game(void *cub);
 
 /*player*/
 int			init_player_data(t_cub *cube);
@@ -103,6 +108,10 @@ void		ply_movements(int key, t_ply *ply, t_cub *cube);
 void		ply_directions(int key, t_ply *ply);
 
 /*DDA : Digital Differential Analysis*/
-void		launch_rays(t_cub *cube, t_data *image);
+void		launch_rays(t_cub *cube, t_data *image_minimap, t_data *image_game);
+
+/*game*/
+int			display_game(t_cub *cube);
+void		display_fisheye(t_ray *ray, t_data *image, int x);
 
 #endif

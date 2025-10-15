@@ -7,7 +7,9 @@ LIBFT := $(LIBFT_DIR)/libft.a
 
 MINIMAP_FILES = minimap/minimap_data.c minimap/position_data.c minimap/create_image.c minimap/update_player_data.c
 
-UTILS_FILES = utils/ft_color.c utils/ft_drawline.c utils/exit_game.c utils/put_pixel.c
+GAME = game/display_fisheye.c game/display_game.c
+
+UTILS_FILES = utils/ft_color.c utils/ft_drawline.c utils/exit_game.c utils/put_pixel.c utils/close_game.c
 
 KEYS_FILES = keys/ft_key_hook.c keys/ply_directions.c keys/ply_movements.c
 
@@ -26,7 +28,7 @@ CC = cc
 CFLAGS = -Wall -Werror -Wextra -g3
 OBJ = $(patsubst %.c, $(OBJDIR)/%.o, $(FILES))
 
-FILES = main.c $(MINIMAP_FILES) $(UTILS_FILES) $(KEYS_FILES)
+FILES = main.c $(MINIMAP_FILES) $(UTILS_FILES) $(KEYS_FILES) $(GAME)
 
 INCLUDES = includes
 INCLUDE_FILES = includes/cub3d.h

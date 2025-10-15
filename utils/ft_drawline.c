@@ -6,14 +6,14 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 12:24:27 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/10/15 15:17:10 by edurance         ###   ########.fr       */
+/*   Updated: 2025/10/15 16:38:14 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 /*Dessine dans l'image une ligne entre a et b*/
-void	ft_drawline(float *a, float *b, t_data *image)
+void	ft_drawline(float *a, float *b, t_data *image, int color)
 {
 	int		steps;
 	float	step[2];
@@ -29,7 +29,7 @@ void	ft_drawline(float *a, float *b, t_data *image)
 	i = 0;
 	while (i < steps)
 	{
-		put_pixel(image, (int)(x + 0.5f), (int)(y + 0.5f), ft_color(0, 0, 255));
+		put_pixel(image, (int)(x + 0.5f), (int)(y + 0.5f), color);
 		x += step[0];
 		y += step[1];
 		i++;
