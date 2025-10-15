@@ -6,7 +6,7 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 14:41:41 by edurance          #+#    #+#             */
-/*   Updated: 2025/10/15 16:49:15 by edurance         ###   ########.fr       */
+/*   Updated: 2025/10/15 17:52:40 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static void	init_game(t_cub *cube, char **av)
 	cube->mlx_window_game = NULL;
 	cube->img_minimap = NULL;
 	cube->img_game = NULL;
+	cube->fps = ft_itoa(0);
 	create_map(cube, av[1]);
 	cube->mlx = mlx_init();
 	cube->mlx_window_minimap = mlx_new_window(cube->mlx, SIZE_X, SIZE_Y,

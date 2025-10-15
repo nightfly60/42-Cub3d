@@ -6,7 +6,7 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 14:44:14 by edurance          #+#    #+#             */
-/*   Updated: 2025/10/15 16:47:27 by edurance         ###   ########.fr       */
+/*   Updated: 2025/10/15 17:56:34 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 # include <float.h>
 # include <math.h>
 # include <stdio.h>
+# include <sys/time.h>
 
 typedef struct s_ply
 {
@@ -84,6 +85,7 @@ typedef struct s_cub
 	int		map_y;
 	int		map_x;
 	t_ply	*player;
+	char	*fps;
 }			t_cub;
 
 /*minimap*/
@@ -92,6 +94,7 @@ void		get_mapdata_display(t_cub *cub);
 void		create_map(t_cub *cube, char *mapfile);
 void		map_background(t_cub *cube, t_data *image);
 void		map_player(t_cub *cube, t_data *image, int ray);
+
 /*utils*/
 int			ft_color(int r, int g, int b);
 void		put_pixel(t_data *data, int x, int y, int color);
@@ -113,5 +116,6 @@ void		launch_rays(t_cub *cube, t_data *image_minimap, t_data *image_game);
 /*game*/
 int			display_game(t_cub *cube);
 void		display_fisheye(t_ray *ray, t_data *image, int x);
+void		display_fps(t_cub *cube);
 
 #endif
