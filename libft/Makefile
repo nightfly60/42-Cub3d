@@ -10,11 +10,11 @@ FILES = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c 
 		ft_lstdelone_bonus.c ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c \
 		ft_put_pointer.c ft_putnbr_unsigned.c ft_hexa.c ft_printf.c get_next_line/get_next_line.c \
 		get_next_line/get_next_line_utils.c ft_freeall.c ft_strcmp.c ft_arrlen.c ft_printable.c ft_lstget.c \
-		ft_intlen.c
+		ft_intlen.c ft_maxf.c
 
 CC = cc
 AR = ar rcs
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g3
 OBJ = $(patsubst %.c, $(OBJDIR)/%.o, $(FILES))
 INCLUDES = include/libft.h
 

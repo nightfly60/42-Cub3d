@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 14:41:41 by edurance          #+#    #+#             */
-/*   Updated: 2025/10/13 14:52:53 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/10/15 12:09:13 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,17 @@
 
 static void	init_game(t_cub *cube, char **av)
 {
+	cube->player = NULL;
+	cube->map = NULL;
+	cube->mlx = NULL;
+	cube->mlx_window = NULL;
+	cube->img = NULL;
 	create_map(cube, av[1]);
 	cube->mlx = mlx_init();
 	cube->mlx_window = mlx_new_window(cube->mlx, SIZE_X, SIZE_Y, "minimap");
 	cube->player = malloc(sizeof(t_ply));
+	if (!cube->player)
+		exit_game(cube);
 	init_player_data(cube);
 	mlx_hook(cube->mlx_window, KeyPress, KeyPressMask, key_hooks, cube);
 }

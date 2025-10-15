@@ -6,15 +6,24 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 14:44:14 by edurance          #+#    #+#             */
-/*   Updated: 2025/10/14 15:56:09 by edurance         ###   ########.fr       */
+/*   Updated: 2025/10/15 15:01:31 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# define SIZE_X 1920
-# define SIZE_Y 1080
+# ifndef SIZE_X
+#  define SIZE_X 1920
+# endif
+
+# ifndef SIZE_Y
+#  define SIZE_Y 1080
+# endif
+
+# ifndef M_PI
+#  define M_PI 3.14159265359f
+# endif
 
 # include "../libft/include/libft.h"
 # include "../mlx_linux/mlx.h"
@@ -26,42 +35,29 @@
 
 typedef struct s_ply
 {
-	float	posX;
-	float	posY;
-	float	dirX;
-	float	dirY;
+	float	pos_x;
+	float	pos_y;
+	float	dir_x;
+	float	dir_y;
 }			t_ply;
 
 typedef struct s_ray
 {
-	float	rayDirX;
-	float	rayDirY;
-	float	cameraX;
-	int		mapX;
-	int		mapY;
-	int		stepX;
-	int		stepY;
-	float	sideDistX;
-	float	sideDistY;
-	float	deltaDistX;
-	float	deltaDistY;
-	float	planeX;
-	float	planeY;
+	float	ray_dir_x;
+	float	ray_dir_y;
+	float	camera_x;
+	int		map_x;
+	int		map_y;
+	int		step_x;
+	int		step_y;
+	float	sidedist_x;
+	float	sidedist_y;
+	float	deltadist_x;
+	float	deltadist_y;
+	float	plane_x;
+	float	plane_y;
 	int		side;
 }			t_ray;
-
-typedef struct s_cub
-{
-	void	*mlx;
-	void	*mlx_window;
-	char	**map;
-	int		longest_line;
-	int		nb_lines;
-	int		mapcub_size;
-	int		map_y;
-	int		map_x;
-	t_ply	*player;
-}			t_cub;
 
 typedef struct s_data
 {
@@ -71,6 +67,20 @@ typedef struct s_data
 	int		line_length;
 	int		endian;
 }			t_data;
+
+typedef struct s_cub
+{
+	void	*mlx;
+	void	*mlx_window;
+	void	*img;
+	char	**map;
+	int		longest_line;
+	int		nb_lines;
+	int		mapcub_size;
+	int		map_y;
+	int		map_x;
+	t_ply	*player;
+}			t_cub;
 
 /*minimap*/
 int			get_mapsize(char *mapfile, t_cub *cub);
@@ -82,13 +92,16 @@ int			display_minimap(t_cub *cube);
 int			ft_color(int r, int g, int b);
 void		put_pixel(t_data *data, int x, int y, int color);
 void		ft_drawline(float *a, float *b, t_data *image);
+void		exit_game(t_cub *cub);
 
 /*player*/
 int			init_player_data(t_cub *cube);
 
-/*key hook*/
+/*keys and movements*/
 int			ft_key_hook(t_win_list *win, int (*funct)(), void *param);
 int			key_hooks(int key, t_cub *cube);
+void		ply_movements(int key, t_ply *ply, t_cub *cube);
+void		ply_directions(int key, t_ply *ply);
 
 /*DDA : Digital Differential Analysis*/
 void		launch_rays(t_cub *cube, t_data *image);

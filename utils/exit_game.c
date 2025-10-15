@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   exit_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/24 11:56:35 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/10/15 12:15:12 by edurance         ###   ########.fr       */
+/*   Created: 2025/10/15 11:27:07 by edurance          #+#    #+#             */
+/*   Updated: 2025/10/15 14:54:47 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned long	ft_strlen(const char *s)
-{
-	unsigned long	i;
+#include "cub3d.h"
 
-	i = 0;
-	if (!s)
-		return (0);
-	while (s[i])
-		i++;
-	return (i);
+void	exit_game(t_cub *cub)
+{
+	if (cub->img)
+		mlx_destroy_image(cub->mlx, cub->img);
+	if (cub->mlx)
+		mlx_destroy_display(cub->mlx);
+	if (cub->mlx_window)
+		mlx_destroy_window(cub->mlx, cub->mlx_window);
+	free(cub->player);
+	ft_freeall(cub->map);
+	free(cub->mlx);
+	free(cub);
+	printf("And thanks for all the fish!\n");
+	exit(0);
 }

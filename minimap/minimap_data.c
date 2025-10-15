@@ -6,7 +6,7 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 11:12:12 by edurance          #+#    #+#             */
-/*   Updated: 2025/10/13 12:12:39 by edurance         ###   ########.fr       */
+/*   Updated: 2025/10/15 11:58:29 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,13 +79,13 @@ void	create_map(t_cub *cube, char *mapfile)
 
 	i = 0;
 	if (get_mapsize(mapfile, cube))
-		return ;
-	cube->map = malloc(sizeof(char *) * cube->nb_lines + 1);
+		exit_game(cube);
+	cube->map = malloc(sizeof(char *) * (cube->nb_lines + 1));
 	if (!cube->map)
-		return ;
+		exit_game(cube);
 	fd = open(mapfile, O_RDONLY);
 	if (fd == -1)
-		return ;
+		exit_game(cube);
 	line = get_next_line(fd);
 	while (line)
 	{
@@ -94,5 +94,6 @@ void	create_map(t_cub *cube, char *mapfile)
 		i++;
 		line = get_next_line(fd);
 	}
+	cube->map[i] = NULL;
 	close(fd);
 }

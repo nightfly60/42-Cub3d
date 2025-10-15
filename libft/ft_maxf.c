@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_max.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/24 11:56:35 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/10/15 12:15:12 by edurance         ###   ########.fr       */
+/*   Created: 2025/10/15 11:10:45 by edurance          #+#    #+#             */
+/*   Updated: 2025/10/15 11:11:05 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned long	ft_strlen(const char *s)
-{
-	unsigned long	i;
+#include "libft.h"
 
-	i = 0;
-	if (!s)
-		return (0);
-	while (s[i])
-		i++;
-	return (i);
+float	ft_maxf(int a, int b)
+{
+	if (a > b)
+		return (a);
+	return (b);
 }

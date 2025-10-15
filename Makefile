@@ -7,7 +7,9 @@ LIBFT := $(LIBFT_DIR)/libft.a
 
 MINIMAP_FILES = minimap/minimap_data.c minimap/position_data.c minimap/create_image.c minimap/update_player_data.c
 
-UTILS_FILES = utils/ft_color.c utils/ft_key_hook.c utils/ft_drawline.c
+UTILS_FILES = utils/ft_color.c utils/ft_drawline.c utils/exit_game.c utils/put_pixel.c
+
+KEYS_FILES = keys/ft_key_hook.c keys/ply_directions.c keys/ply_movements.c
 
 LIBFT_SRCS := libft/ft_atoi.c libft/ft_bzero.c libft/ft_calloc.c libft/ft_isalnum.c libft/ft_isalpha.c libft/ft_isascii.c \
 			libft/ft_isdigit.c libft/ft_isprint.c libft/ft_itoa.c libft/ft_memchr.c libft/ft_memcmp.c libft/ft_memcpy.c \
@@ -18,13 +20,13 @@ LIBFT_SRCS := libft/ft_atoi.c libft/ft_bzero.c libft/ft_calloc.c libft/ft_isalnu
 			libft/ft_lstnew_bonus.c libft/ft_lstsize_bonus.c libft/ft_lstlast_bonus.c libft/ft_lstadd_back_bonus.c \
 			libft/ft_lstdelone_bonus.c libft/ft_lstclear_bonus.c libft/ft_lstiter_bonus.c libft/ft_lstmap_bonus.c \
 			libft/ft_putnbr_unsigned.c libft/ft_printf.c libft/get_next_line/get_next_line.c \
-			libft/get_next_line/get_next_line_utils.c libft/ft_freeall.c libft/ft_lstget.c libft/ft_lstget.c
+			libft/get_next_line/get_next_line_utils.c libft/ft_freeall.c libft/ft_lstget.c libft/ft_lstget.c libft/ft_maxf.c
 
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -g3
 OBJ = $(patsubst %.c, $(OBJDIR)/%.o, $(FILES))
 
-FILES = main.c $(MINIMAP_FILES) $(UTILS_FILES)
+FILES = main.c $(MINIMAP_FILES) $(UTILS_FILES) $(KEYS_FILES)
 
 INCLUDES = includes
 INCLUDE_FILES = includes/cub3d.h
