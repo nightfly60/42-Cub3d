@@ -6,13 +6,14 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 15:40:18 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/10/15 15:01:27 by edurance         ###   ########.fr       */
+/*   Updated: 2025/10/15 15:16:22 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	clc_step_side(t_ply *ply, t_ray *ray)
+/*Calcule StepX/StepY et sideDistX/sideDistY*/
+static void	calculate_step_side(t_ply *ply, t_ray *ray)
 {
 	if (ray->ray_dir_x >= 0)
 	{
@@ -36,6 +37,13 @@ static void	clc_step_side(t_ply *ply, t_ray *ray)
 	}
 }
 
+/*Initialise les variables necessaires au DDA:
+	- mapX/mapY
+	- rayDirX/rayDirY
+	- sideDistX/sideDistY
+	- deltaDistX/deltaDistY
+	- stepX/stepY
+*/
 static void	init_dda_datas(t_ply *ply, t_ray *ray)
 {
 	ray->map_x = (int)ply->pos_x;
@@ -48,9 +56,10 @@ static void	init_dda_datas(t_ply *ply, t_ray *ray)
 		ray->deltadist_y = fabsf(1 / ray->ray_dir_y);
 	else
 		ray->deltadist_y = FLT_MAX;
-	clc_step_side(ply, ray);
+	calculate_step_side(ply, ray);
 }
 
+/*Affiche un rayon sur la minimap*/
 static void	display_ray(t_cub *cube, t_data *image, t_ray *ray)
 {
 	float	dist;
@@ -70,6 +79,8 @@ static void	display_ray(t_cub *cube, t_data *image, t_ray *ray)
 	ft_drawline(start_line, end_line, image);
 }
 
+/*Fonction qui applique le DDA et donc la distance entre le player
+	et le premier mur dans la direction du rayon*/
 static void	next_wall_dist(t_cub *cube, t_data *image, t_ray *ray)
 {
 	int	wall;
@@ -96,6 +107,7 @@ static void	next_wall_dist(t_cub *cube, t_data *image, t_ray *ray)
 	display_ray(cube, image, ray);
 }
 
+/*Envoie tous les rayons de la FOV du joueur*/
 void	launch_rays(t_cub *cube, t_data *image)
 {
 	int		i;

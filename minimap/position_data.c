@@ -6,13 +6,14 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 11:47:53 by edurance          #+#    #+#             */
-/*   Updated: 2025/10/15 14:59:07 by edurance         ###   ########.fr       */
+/*   Updated: 2025/10/15 15:12:31 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	player_angle(t_cub *cube, char c)
+/*Donne au player sa direction de spawn*/
+static void	player_dir(t_cub *cube, char c)
 {
 	if (c == 'N')
 	{
@@ -36,6 +37,7 @@ static void	player_angle(t_cub *cube, char c)
 	}
 }
 
+/*Initialise les donnes du player*/
 int	init_player_data(t_cub *cube)
 {
 	int		x;
@@ -53,7 +55,7 @@ int	init_player_data(t_cub *cube)
 			{
 				cube->player->pos_x = x + 0.5f;
 				cube->player->pos_y = y + 0.5f;
-				return (player_angle(cube, c), 1);
+				return (player_dir(cube, c), 1);
 			}
 			x++;
 		}

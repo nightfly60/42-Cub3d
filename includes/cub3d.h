@@ -6,7 +6,7 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 14:44:14 by edurance          #+#    #+#             */
-/*   Updated: 2025/10/15 15:01:31 by edurance         ###   ########.fr       */
+/*   Updated: 2025/10/15 15:07:22 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,6 @@ void		exit_game(t_cub *cub);
 int			init_player_data(t_cub *cube);
 
 /*keys and movements*/
-int			ft_key_hook(t_win_list *win, int (*funct)(), void *param);
 int			key_hooks(int key, t_cub *cube);
 void		ply_movements(int key, t_ply *ply, t_cub *cube);
 void		ply_directions(int key, t_ply *ply);

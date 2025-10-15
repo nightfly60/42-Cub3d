@@ -6,12 +6,13 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 12:24:27 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/10/15 14:54:13 by edurance         ###   ########.fr       */
+/*   Updated: 2025/10/15 15:17:10 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/*Dessine dans l'image une ligne entre a et b*/
 void	ft_drawline(float *a, float *b, t_data *image)
 {
 	int		steps;

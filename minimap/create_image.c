@@ -6,12 +6,13 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 12:41:04 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/10/15 14:58:34 by edurance         ###   ########.fr       */
+/*   Updated: 2025/10/15 15:11:35 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/*Dessine les (mapcub_size) pixels de chaque ligne a la bonne couleur*/
 static void	draw_case(t_cub *cube, t_data *image, int y, int x)
 {
 	char	*dst;
@@ -32,6 +33,7 @@ static void	draw_case(t_cub *cube, t_data *image, int y, int x)
 	}
 }
 
+/*Dessine dans l'image la map en 2D*/
 static void	map_background(t_cub *cube, t_data *image)
 {
 	int		x;
@@ -50,6 +52,7 @@ static void	map_background(t_cub *cube, t_data *image)
 	}
 }
 
+/*Dessine le player sur la map en 2D*/
 static void	map_player(t_cub *cube, t_data *image, int ray)
 {
 	int	x;
@@ -76,10 +79,12 @@ static void	map_player(t_cub *cube, t_data *image, int ray)
 	}
 }
 
+/*Fonction qui affiche une frame de la minimap (appelee dans un hook_loop)*/
 int	display_minimap(t_cub *cube)
 {
 	t_data	image;
 
+	image.img = NULL;
 	cube->img = image.img;
 	get_mapdata_display(cube);
 	image.img = mlx_new_image(cube->mlx, cube->longest_line * cube->mapcub_size,
@@ -92,6 +97,5 @@ int	display_minimap(t_cub *cube)
 	mlx_put_image_to_window(cube->mlx, cube->mlx_window, image.img, cube->map_x,
 		cube->map_y);
 	mlx_destroy_image(cube->mlx, image.img);
-	image.img = NULL;
 	return (1);
 }

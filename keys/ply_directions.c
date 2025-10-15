@@ -6,12 +6,13 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 11:04:20 by edurance          #+#    #+#             */
-/*   Updated: 2025/10/15 15:03:06 by edurance         ###   ########.fr       */
+/*   Updated: 2025/10/15 15:08:44 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/*Calcule le nouvelle angle du joueur*/
 void	ply_directions(int key, t_ply *ply)
 {
 	float	old_dir_x;

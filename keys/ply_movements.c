@@ -6,12 +6,13 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 10:50:30 by edurance          #+#    #+#             */
-/*   Updated: 2025/10/15 15:02:25 by edurance         ###   ########.fr       */
+/*   Updated: 2025/10/15 15:09:26 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/*Gere les mouvements mediaux*/
 static void	medial_moves(int key, t_ply *ply, t_cub *cub)
 {
 	float	steps;
@@ -41,6 +42,7 @@ static void	medial_moves(int key, t_ply *ply, t_cub *cub)
 	}
 }
 
+/*Gere les mouvements lateraux*/
 static void	lateral_moves(int key, t_ply *pl, t_cub *cub)
 {
 	float	steps;
@@ -69,6 +71,7 @@ static void	lateral_moves(int key, t_ply *pl, t_cub *cub)
 	}
 }
 
+/*Gere les mouvements du joueur*/
 void	ply_movements(int key, t_ply *ply, t_cub *cube)
 {
 	if (key == XK_w || key == XK_s)
