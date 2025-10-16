@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   put_pixel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 11:28:03 by edurance          #+#    #+#             */
-/*   Updated: 2025/10/15 15:17:39 by edurance         ###   ########.fr       */
+/*   Updated: 2025/10/16 10:35:32 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,6 @@ void	put_pixel(t_data *data, int x, int y, int color)
 {
 	char	*dst;
 
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	dst = data->addr + (y * data->l_line + x * (data->bpp / 8));
 	*(unsigned int *)dst = color;
 }
