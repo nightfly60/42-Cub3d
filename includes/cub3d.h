@@ -6,7 +6,7 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 14:44:14 by edurance          #+#    #+#             */
-/*   Updated: 2025/10/16 11:54:05 by edurance         ###   ########.fr       */
+/*   Updated: 2025/10/16 12:33:33 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,5 +121,6 @@ int			display_game(t_cub *cube);
 void		display_fisheye(t_ray *ray, t_data *image, int x);
 void		display_fps(t_cub *cube);
 void		display_game_bg(t_cub *cube, t_data *image);
+void		display_crosshair(t_data *img);
 
 #endif
