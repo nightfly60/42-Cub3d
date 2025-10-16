@@ -6,7 +6,7 @@
 /*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 15:40:18 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/10/16 10:52:43 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/10/16 11:25:06 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static void	display_ray(t_cub *cube, t_data *image, t_ray *ray)
 		* cube->mapcub_size;
 	start_line[0] = cube->player->pos_x * cube->mapcub_size;
 	start_line[1] = cube->player->pos_y * cube->mapcub_size;
-	ft_drawline(start_line, end_line, image, ft_color(0, 0, 255));
+	ft_drawline(start_line, end_line, image, ft_color(150, 100, 38));
 }
 
 /*Fonction qui applique le DDA et donc la distance entre le player

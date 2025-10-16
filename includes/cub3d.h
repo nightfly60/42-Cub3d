@@ -6,7 +6,7 @@
 /*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 14:44:14 by edurance          #+#    #+#             */
-/*   Updated: 2025/10/16 10:52:50 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/10/16 11:43:09 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 # define CUB3D_H
 
 # ifndef SIZE_X
-#  define SIZE_X 1228
+#  define SIZE_X 1920
 # endif
 
 # ifndef SIZE_Y
-#  define SIZE_Y 921
+#  define SIZE_Y 1080
 # endif
 
 # ifndef M_PI
@@ -86,6 +86,8 @@ typedef struct s_cub
 	int		map_x;
 	int		floor_color;
 	int		ceiling_color;
+	int		minimap_sizex;
+	int		minimap_sizey;
 	t_ply	*player;
 	char	*fps;
 }			t_cub;

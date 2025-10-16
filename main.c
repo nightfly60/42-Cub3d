@@ -6,7 +6,7 @@
 /*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 14:41:41 by edurance          #+#    #+#             */
-/*   Updated: 2025/10/16 10:17:21 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/10/16 11:12:57 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ static void	init_game(t_cub *cube, char **av)
 	cube->img_game = NULL;
 	cube->ceiling_color = ft_color(0, 255, 255);
 	cube->floor_color = ft_color(255, 192, 203);
+	cube->minimap_sizex = SIZE_X * 0.25;
+	cube->minimap_sizey = SIZE_Y * 0.25;
 	cube->fps = ft_itoa(0);
 	create_map(cube, av[1]);
 	cube->mlx = mlx_init();
