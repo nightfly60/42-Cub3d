@@ -6,7 +6,7 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 13:53:30 by edurance          #+#    #+#             */
-/*   Updated: 2025/09/02 12:18:20 by edurance         ###   ########.fr       */
+/*   Updated: 2025/10/15 11:11:34 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int					ft_arrlen(char **tab);
 int					ft_strcmp(char *s1, char *s2);
 int					ft_isspace(char c);
 int					ft_intlen(int n);
+float				ft_maxf(int a, int b);
 
 // Libft bonus (listes chainees)
 typedef struct s_list

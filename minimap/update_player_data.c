@@ -3,100 +3,126 @@
 /*                                                        :::      ::::::::   */
 /*   update_player_data.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 15:40:18 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/10/14 12:56:18 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/10/15 16:44:21 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	clc_step_side(t_ply *ply)
+/*Calcule StepX/StepY et sideDistX/sideDistY*/
+static void	calculate_step_side(t_ply *ply, t_ray *ray)
 {
-	if (ply->dirX >= 0)
+	if (ray->ray_dir_x >= 0)
 	{
-		ply->stepX = 1;
-		ply->sideDistX = (ply->mapX + 1.0f - ply->posX) * ply->deltaDistX;
+		ray->step_x = 1;
+		ray->sidedist_x = (ray->map_x + 1.0f - ply->pos_x) * ray->deltadist_x;
 	}
 	else
 	{
-		ply->stepX = -1;
-		ply->sideDistX = (ply->posX - ply->mapX) * ply->deltaDistX;
+		ray->step_x = -1;
+		ray->sidedist_x = (ply->pos_x - ray->map_x) * ray->deltadist_x;
 	}
-	if (ply->dirY >= 0)
+	if (ray->ray_dir_y >= 0)
 	{
-		ply->stepY = 1;
-		ply->sideDistY = (ply->mapY + 1.0f - ply->posY) * ply->deltaDistY;
+		ray->step_y = 1;
+		ray->sidedist_y = (ray->map_y + 1.0f - ply->pos_y) * ray->deltadist_y;
 	}
 	else
 	{
-		ply->stepY = -1;
-		ply->sideDistY = (ply->posY - ply->mapY) * ply->deltaDistY;
+		ray->step_y = -1;
+		ray->sidedist_y = (ply->pos_y - ray->map_y) * ray->deltadist_y;
 	}
 }
 
-void	init_dda_datas(t_ply *ply)
+/*Initialise les variables necessaires au DDA:
+	- mapX/mapY
+	- rayDirX/rayDirY
+	- sideDistX/sideDistY
+	- deltaDistX/deltaDistY
+	- stepX/stepY
+*/
+static void	init_dda_datas(t_ply *ply, t_ray *ray)
 {
-	ply->mapX = (int)ply->posX;
-	ply->mapY = (int)ply->posY;
-	if (ply->dirX)
-		ply->deltaDistX = fabsf(1 / ply->dirX);
+	ray->map_x = (int)ply->pos_x;
+	ray->map_y = (int)ply->pos_y;
+	if (ray->ray_dir_x)
+		ray->deltadist_x = fabsf(1 / ray->ray_dir_x);
 	else
-		ply->deltaDistX = FLT_MAX;
-	if (ply->dirY)
-		ply->deltaDistY = fabsf(1 / ply->dirY);
+		ray->deltadist_x = FLT_MAX;
+	if (ray->ray_dir_y)
+		ray->deltadist_y = fabsf(1 / ray->ray_dir_y);
 	else
-		ply->deltaDistY = FLT_MAX;
-	clc_step_side(ply);
-	// printf("Step X = %d || Step Y = %d\n", ply->stepX, ply->stepY);
-	// printf("SidDirX = %f || SideDirY = %f\n", ply->sideDistX, ply->sideDistY);
-	// printf("mapX = %d || mapY = %d\n", ply->mapX, ply->mapY);
-	// printf("deltaDistX = %f || deltaDistY = %f\n", ply->deltaDistX, ply->deltaDistY);
-	// printf("posx = %f posy = %f angX = %f angY = %f\n", ply->posX, ply->posY, ply->dirX, ply->dirY);
+		ray->deltadist_y = FLT_MAX;
+	calculate_step_side(ply, ray);
 }
 
-static void	display_ray(t_cub *cube, t_data *image)
+/*Affiche un rayon sur la minimap*/
+static void	display_ray(t_cub *cube, t_data *image, t_ray *ray)
 {
-	float	dist;
-	float	endLine[2];
-	float	startLine[2];
+	float	end_line[2];
+	float	start_line[2];
 
-	if (!cube->player->side)
-		dist = cube->player->sideDistX - cube->player->deltaDistX;
+	if (!ray->side)
+		ray->perp_wall_dist = ray->sidedist_x - ray->deltadist_x;
 	else
-		dist = cube->player->sideDistY - cube->player->deltaDistY;
-	endLine[0] = (cube->player->posX + dist * cube->player->dirX) * cube->mapcub_size;
-	endLine[1] = (cube->player->posY + dist * cube->player->dirY) * cube->mapcub_size;
-	startLine[0] = cube->player->posX * cube->mapcub_size;
-	startLine[1] = cube->player->posY * cube->mapcub_size;
-	ft_drawline(startLine, endLine, image);
+		ray->perp_wall_dist = ray->sidedist_y - ray->deltadist_y;
+	end_line[0] = (cube->player->pos_x + ray->perp_wall_dist * ray->ray_dir_x)
+		* cube->mapcub_size;
+	end_line[1] = (cube->player->pos_y + ray->perp_wall_dist * ray->ray_dir_y)
+		* cube->mapcub_size;
+	start_line[0] = cube->player->pos_x * cube->mapcub_size;
+	start_line[1] = cube->player->pos_y * cube->mapcub_size;
+	ft_drawline(start_line, end_line, image, ft_color(0, 0, 255));
 }
 
-void	next_wall_dist(t_cub *cube, t_data *image)
+/*Fonction qui applique le DDA et donc la distance entre le player
+	et le premier mur dans la direction du rayon*/
+static void	next_wall_dist(t_cub *cube, t_data *image, t_ray *ray)
 {
-	int		wall;
-	t_ply	*ply;
+	int	wall;
 
-	ply = cube->player;
-	init_dda_datas(ply);
+	init_dda_datas(cube->player, ray);
 	wall = 0;
 	while (!wall)
 	{
-		if (ply->sideDistX < ply->sideDistY)
+		if (ray->sidedist_x < ray->sidedist_y)
 		{
-			ply->sideDistX = ply->sideDistX + ply->deltaDistX;
-			ply->mapX += ply->stepX;
-			ply->side = 0;
+			ray->sidedist_x = ray->sidedist_x + ray->deltadist_x;
+			ray->map_x += ray->step_x;
+			ray->side = 0;
 		}
 		else
 		{
-			ply->sideDistY += ply->deltaDistY;
-			ply->mapY += ply->stepY;
-			ply->side = 1;
+			ray->sidedist_y += ray->deltadist_y;
+			ray->map_y += ray->step_y;
+			ray->side = 1;
 		}
-		if (cube->map[ply->mapY][ply->mapX] == '1')
+		if (cube->map[ray->map_y][ray->map_x] == '1')
 			wall = 1;
 	}
-	display_ray(cube, image);
+	display_ray(cube, image, ray);
+}
+
+/*Envoie tous les rayons de la FOV du joueur*/
+void	launch_rays(t_cub *cube, t_data *image_minimap, t_data *image_game)
+{
+	int		i;
+	t_ray	ray;
+
+	i = 0;
+	ray.plane_x = cube->player->dir_y * -1 * 0.66;
+	ray.plane_y = cube->player->dir_x * 0.66;
+	while (i < SIZE_X)
+	{
+		ray.camera_x = 2 * i / (float)SIZE_X - 1.0f;
+		ray.ray_dir_x = cube->player->dir_x + ray.plane_x * ray.camera_x;
+		ray.ray_dir_y = cube->player->dir_y + ray.plane_y * ray.camera_x;
+		next_wall_dist(cube, image_minimap, &ray);
+		ray.line_height = (int)(SIZE_Y / ray.perp_wall_dist);
+		display_fisheye(&ray, image_game, i);
+		i++;
+	}
 }

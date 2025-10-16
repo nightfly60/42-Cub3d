@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   close_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/24 11:56:35 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/10/15 12:15:12 by edurance         ###   ########.fr       */
+/*   Created: 2025/10/15 15:32:46 by edurance          #+#    #+#             */
+/*   Updated: 2025/10/15 15:36:30 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned long	ft_strlen(const char *s)
-{
-	unsigned long	i;
+#include "cub3d.h"
 
-	i = 0;
-	if (!s)
-		return (0);
-	while (s[i])
-		i++;
-	return (i);
+/*exit game avec void * en param pour le hook (croix en haut a droite)*/
+int	close_game(void *cub)
+{
+	exit_game((t_cub *)cub);
+	return (0);
 }
