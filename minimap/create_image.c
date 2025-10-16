@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_image.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 12:41:04 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/10/15 16:25:36 by edurance         ###   ########.fr       */
+/*   Updated: 2025/10/16 11:40:43 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ static void	draw_case(t_cub *cube, t_data *image, int y, int x)
 	c = cube->map[y / cube->mapcub_size][x];
 	while (z < cube->mapcub_size)
 	{
-		dst = image->addr + (y * image->line_length + (z + x
-					* cube->mapcub_size) * (image->bits_per_pixel / 8));
+		dst = image->addr + (y * image->l_line + (z + x
+					* cube->mapcub_size) * (image->bpp / 8));
 		if (c == '0' || c == 'N' || c == 'W' || c == 'E' || c == 'S')
-			*(unsigned int *)dst = ft_color(0, 120, 0);
+			*(unsigned int *)dst = ft_color(173, 117, 32);
 		else
-			*(unsigned int *)dst = ft_color(255, 0, 0);
+			*(unsigned int *)dst = ft_color(91, 78, 62);
 		z++;
 	}
 }
@@ -36,8 +36,8 @@ static void	draw_case(t_cub *cube, t_data *image, int y, int x)
 /*Dessine dans l'image la map en 2D*/
 void	map_background(t_cub *cube, t_data *image)
 {
-	int		x;
-	int		y;
+	int	x;
+	int	y;
 
 	y = 0;
 	while (y < cube->nb_lines * cube->mapcub_size)
@@ -61,6 +61,7 @@ void	map_player(t_cub *cube, t_data *image, int ray)
 	int	y_origin;
 	int	dist;
 
+	ray = (ray * SIZE_X) / 1920;
 	x_origin = (int)(cube->player->pos_x * cube->mapcub_size);
 	y_origin = (int)(cube->player->pos_y * cube->mapcub_size);
 	x = (x_origin - ray);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 14:44:14 by edurance          #+#    #+#             */
-/*   Updated: 2025/10/15 17:56:34 by edurance         ###   ########.fr       */
+/*   Updated: 2025/10/16 11:43:09 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 # define CUB3D_H
 
 # ifndef SIZE_X
-#  define SIZE_X 1228
+#  define SIZE_X 1920
 # endif
 
 # ifndef SIZE_Y
-#  define SIZE_Y 921
+#  define SIZE_Y 1080
 # endif
 
 # ifndef M_PI
@@ -66,9 +66,9 @@ typedef struct s_data
 {
 	void	*img;
 	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
+	int		bpp;
+	int		l_line;
+	int		end;
 }			t_data;
 
 typedef struct s_cub
@@ -84,6 +84,10 @@ typedef struct s_cub
 	int		mapcub_size;
 	int		map_y;
 	int		map_x;
+	int		floor_color;
+	int		ceiling_color;
+	int		minimap_sizex;
+	int		minimap_sizey;
 	t_ply	*player;
 	char	*fps;
 }			t_cub;
@@ -117,5 +121,6 @@ void		launch_rays(t_cub *cube, t_data *image_minimap, t_data *image_game);
 int			display_game(t_cub *cube);
 void		display_fisheye(t_ray *ray, t_data *image, int x);
 void		display_fps(t_cub *cube);
+void		display_game_bg(t_cub *cube, t_data *image);
 
 #endif
