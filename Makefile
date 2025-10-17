@@ -7,7 +7,7 @@ LIBFT := $(LIBFT_DIR)/libft.a
 
 MINIMAP_FILES = minimap/minimap_data.c minimap/position_data.c minimap/create_image.c minimap/update_player_data.c
 
-GAME = game/display_fisheye.c game/display_game.c game/display_fps.c game/display_game_bg.c
+GAME = game/display_fisheye.c game/display_game.c game/display_fps.c game/display_game_bg.c game/display_crosshair.c
 
 UTILS_FILES = utils/ft_color.c utils/ft_drawline.c utils/exit_game.c utils/put_pixel.c utils/close_game.c
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 14:44:14 by edurance          #+#    #+#             */
-/*   Updated: 2025/10/16 11:43:09 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/10/16 12:33:33 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ typedef struct s_data
 typedef struct s_cub
 {
 	void	*mlx;
-	void	*mlx_window_minimap;
 	void	*mlx_window_game;
 	void	*img_minimap;
 	void	*img_game;
@@ -122,5 +121,6 @@ int			display_game(t_cub *cube);
 void		display_fisheye(t_ray *ray, t_data *image, int x);
 void		display_fps(t_cub *cube);
 void		display_game_bg(t_cub *cube, t_data *image);
+void		display_crosshair(t_data *img);
 
 #endif

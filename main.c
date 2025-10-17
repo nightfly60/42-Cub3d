@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 14:41:41 by edurance          #+#    #+#             */
-/*   Updated: 2025/10/16 11:12:57 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/10/16 11:54:55 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ static void	init_game(t_cub *cube, char **av)
 	cube->player = NULL;
 	cube->map = NULL;
 	cube->mlx = NULL;
-	cube->mlx_window_minimap = NULL;
 	cube->mlx_window_game = NULL;
 	cube->img_minimap = NULL;
 	cube->img_game = NULL;
@@ -28,9 +27,7 @@ static void	init_game(t_cub *cube, char **av)
 	cube->fps = ft_itoa(0);
 	create_map(cube, av[1]);
 	cube->mlx = mlx_init();
-	cube->mlx_window_minimap = mlx_new_window(cube->mlx, SIZE_X, SIZE_Y,
-			"minimap");
-	cube->mlx_window_game = mlx_new_window(cube->mlx, SIZE_X, SIZE_Y, "game");
+	cube->mlx_window_game = mlx_new_window(cube->mlx, SIZE_X, SIZE_Y, "cub3D");
 	cube->player = malloc(sizeof(t_ply));
 	if (!cube->player)
 		exit_game(cube);
