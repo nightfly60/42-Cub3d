@@ -3,10 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   minimap_data.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
+<<<<<<< HEAD
 /*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 11:12:12 by edurance          #+#    #+#             */
 /*   Updated: 2025/10/17 11:06:45 by aabouyaz         ###   ########.fr       */
+=======
+/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/13 11:12:12 by edurance          #+#    #+#             */
+/*   Updated: 2025/10/15 11:58:29 by edurance         ###   ########.fr       */
+>>>>>>> elena
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,18 +55,31 @@ void	get_mapdata_display(t_cub *cub)
 	int	cub_x;
 	int	cub_y;
 
+<<<<<<< HEAD
 	cub_x = cub->minimap_sizex / cub->longest_line;
 	cub_y = cub->minimap_sizey / cub->nb_lines;
 	if (cub_x < cub_y)
 	{
 		cub->map_x = 0;
 		cub->map_y = (cub->minimap_sizey - cub_x * cub->nb_lines) / 2;
+=======
+	cub_x = SIZE_X / cub->longest_line;
+	cub_y = SIZE_Y / cub->nb_lines;
+	if (cub_x < cub_y)
+	{
+		cub->map_x = 0;
+		cub->map_y = (SIZE_Y - cub_x * cub->nb_lines) / 2;
+>>>>>>> elena
 		cub->mapcub_size = cub_x;
 	}
 	else if (cub_x > cub_y)
 	{
 		cub->map_y = 0;
+<<<<<<< HEAD
 		cub->map_x = (cub->minimap_sizex - cub_y * cub->longest_line) / 2;
+=======
+		cub->map_x = (SIZE_X - cub_y * cub->longest_line) / 2;
+>>>>>>> elena
 		cub->mapcub_size = cub_y;
 	}
 	else
