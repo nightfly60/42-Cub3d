@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 14:44:14 by edurance          #+#    #+#             */
-/*   Updated: 2025/10/18 11:19:37 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/10/19 13:23:33 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,11 @@ typedef struct s_textures
 	int			ceiling_color;
 }				t_textures;
 
+typedef struct s_map
+{
+	t_list		*mapfile;
+}				t_map;
+
 typedef struct s_cub
 {
 	void		*mlx;
@@ -146,5 +151,9 @@ void			display_fps(t_cub *cube);
 void			display_game_bg(t_cub *cube, t_data *image);
 void			display_crosshair(t_data *img);
 void			init_textures(t_cub *cube);
+
+/*parsing*/
+int				get_filemap(char *path, t_map *map);
+char			**get_map(t_map *map);
 
 #endif
