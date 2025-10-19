@@ -6,7 +6,7 @@
 /*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 14:26:37 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/10/17 13:20:56 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/10/18 11:13:35 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,28 +29,26 @@ int	key_hooks(int key, t_cub *cube)
 
 int	mouse_moves(int x, int y, t_cub *cube)
 {
-	static int	old_x = 0;
+	static int	middle_x = SIZE_X / 2;
 	float		old_dir_x;
 	float		angle;
 	t_ply		*pl;
 
+	(void)y;
 	pl = cube->player;
 	angle = 0.02f;
 	old_dir_x = pl->dir_x;
-	(void)y;
-	if (old_x == 0)
-		old_x = x;
-	else if (x < old_x && old_x - x > 10)
+	if (x + 10 < middle_x)
 	{
 		pl->dir_x = old_dir_x * cosf(angle * -1) - pl->dir_y * sinf(angle * -1);
 		pl->dir_y = old_dir_x * sinf(angle * -1) + pl->dir_y * cosf(angle * -1);
+		mlx_mouse_move(cube->mlx, cube->mlx_window_game, middle_x, SIZE_Y / 2);
 	}
-	else if (x > old_x && x - old_x > 10)
+	if (x > middle_x + 10)
 	{
 		pl->dir_x = old_dir_x * cosf(angle) - pl->dir_y * sinf(angle);
 		pl->dir_y = old_dir_x * sinf(angle) + pl->dir_y * cosf(angle);
+		mlx_mouse_move(cube->mlx, cube->mlx_window_game, middle_x, SIZE_Y / 2);
 	}
-	else
-		old_x = x;
 	return (0);
 }

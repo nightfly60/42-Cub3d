@@ -6,7 +6,7 @@
 /*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 11:27:07 by edurance          #+#    #+#             */
-/*   Updated: 2025/10/17 12:15:13 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/10/18 11:21:24 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ static void	destroy_images(t_cub *cub)
 void	exit_game(t_cub *cub)
 {
 	destroy_images(cub);
+	mlx_mouse_show(cub->mlx, cub->mlx_window_game);
 	if (cub->mlx_window_game)
 		mlx_destroy_window(cub->mlx, cub->mlx_window_game);
 	if (cub->mlx)

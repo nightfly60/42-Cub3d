@@ -6,7 +6,7 @@
 /*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 16:28:08 by edurance          #+#    #+#             */
-/*   Updated: 2025/10/17 12:48:13 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/10/18 11:19:20 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void	display_fisheye(t_ray *ray, t_data *image, int x, t_cub *cube)
 		ray->draw_start = 0;
 	ray->draw_end = (float)(ray->line_height / 2 + SIZE_Y / 2);
 	if (ray->draw_end >= SIZE_Y)
-		ray->draw_end = SIZE_Y - 1;
+		ray->draw_end = SIZE_Y;
 	if (!ray->side)
 	{
 		if (ray->ray_dir_x > 0)
