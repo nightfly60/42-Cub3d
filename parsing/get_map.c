@@ -6,7 +6,7 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 13:21:24 by edurance          #+#    #+#             */
-/*   Updated: 2025/10/19 13:23:15 by edurance         ###   ########.fr       */
+/*   Updated: 2025/10/19 15:34:20 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,7 @@ char	**get_map(t_map *map)
 	map_start = *filemap;
 	while ((*filemap))
 	{
-		if (!ft_strncmp((char *)(*filemap)->content, "NO", 2)
-			|| ft_strlen((char *)(*filemap)->content) <= 1)
+		if (ft_strlen((char *)(*filemap)->content) <= 1)
 			break ;
 		i++;
 		*filemap = (*filemap)->next;
