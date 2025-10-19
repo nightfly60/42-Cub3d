@@ -3,17 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_key_hook.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-<<<<<<< HEAD
 /*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 14:26:37 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/10/18 11:13:35 by aabouyaz         ###   ########.fr       */
-=======
-/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/13 14:26:37 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/10/15 15:08:26 by edurance         ###   ########.fr       */
->>>>>>> elena
+/*   Updated: 2025/10/19 16:28:35 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +26,6 @@ int	key_hooks(int key, t_cub *cube)
 		exit_game(cube);
 	return (0);
 }
-<<<<<<< HEAD
 
 int	mouse_moves(int x, int y, t_cub *cube)
 {
@@ -60,5 +52,3 @@ int	mouse_moves(int x, int y, t_cub *cube)
 	}
 	return (0);
 }
-=======
->>>>>>> elena

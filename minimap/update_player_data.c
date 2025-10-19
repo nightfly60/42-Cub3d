@@ -3,17 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   update_player_data.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-<<<<<<< HEAD
 /*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 15:40:18 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/10/17 12:48:30 by aabouyaz         ###   ########.fr       */
-=======
-/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/13 15:40:18 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/10/15 16:44:21 by edurance         ###   ########.fr       */
->>>>>>> elena
+/*   Updated: 2025/10/19 16:28:09 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,11 +75,7 @@ static void	display_ray(t_cub *cube, t_data *image, t_ray *ray)
 		* cube->mapcub_size;
 	start_line[0] = cube->player->pos_x * cube->mapcub_size;
 	start_line[1] = cube->player->pos_y * cube->mapcub_size;
-<<<<<<< HEAD
 	ft_drawline(start_line, end_line, image, ft_color(150, 100, 38));
-=======
-	ft_drawline(start_line, end_line, image, ft_color(0, 0, 255));
->>>>>>> elena
 }
 
 /*Fonction qui applique le DDA et donc la distance entre le player
@@ -133,7 +122,6 @@ void	launch_rays(t_cub *cube, t_data *image_minimap, t_data *image_game)
 		ray.ray_dir_y = cube->player->dir_y + ray.plane_y * ray.camera_x;
 		next_wall_dist(cube, image_minimap, &ray);
 		ray.line_height = (int)(SIZE_Y / ray.perp_wall_dist);
-<<<<<<< HEAD
 		if (ray.side)
 			ray.wall_x = cube->player->pos_x + ray.perp_wall_dist
 				* ray.ray_dir_x;
@@ -142,9 +130,6 @@ void	launch_rays(t_cub *cube, t_data *image_minimap, t_data *image_game)
 				* ray.ray_dir_y;
 		ray.wall_x = ray.wall_x - floorf(ray.wall_x);
 		display_fisheye(&ray, image_game, i, cube);
-=======
-		display_fisheye(&ray, image_game, i);
->>>>>>> elena
 		i++;
 	}
 }

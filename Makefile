@@ -7,16 +7,10 @@ LIBFT := $(LIBFT_DIR)/libft.a
 
 MINIMAP_FILES = minimap/minimap_data.c minimap/position_data.c minimap/create_image.c minimap/update_player_data.c
 
-<<<<<<< HEAD
 GAME =	game/display_fisheye.c game/display_game.c game/display_fps.c game/display_game_bg.c game/display_crosshair.c \
 		game/init_textures.c
 
 UTILS_FILES = utils/ft_color.c utils/ft_drawline.c utils/exit_game.c utils/put_pixel.c utils/close_game.c utils/init_game.c
-=======
-GAME = game/display_fisheye.c game/display_game.c game/display_fps.c
-
-UTILS_FILES = utils/ft_color.c utils/ft_drawline.c utils/exit_game.c utils/put_pixel.c utils/close_game.c
->>>>>>> elena
 
 KEYS_FILES = keys/ft_key_hook.c keys/ply_directions.c keys/ply_movements.c
 
