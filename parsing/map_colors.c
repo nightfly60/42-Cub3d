@@ -6,7 +6,7 @@
 /*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 12:25:53 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/10/19 13:26:00 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/10/19 16:53:51 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	get_color(int *res, char **tab_color)
 	int	b;
 
 	if (*res == -1)
-	return ;
+		return ;
 	r = (int)ft_atoi(tab_color[0]);
 	g = (int)ft_atoi(tab_color[1]);
 	b = (int)ft_atoi(tab_color[2]);
@@ -55,12 +55,13 @@ static int	check_color(char *color)
 	return (res);
 }
 
-static int	parse_color(void *content)
+static int	parse_color(void *content, int *count)
 {
 	char	*str;
 	char	**split;
 	int		res;
 
+	(*count)++;
 	str = (char *)content;
 	split = ft_split(content, ' ');
 	if (!(!ft_strcmp(split[0], "F") || !ft_strcmp(split[0], "C"))
@@ -77,16 +78,25 @@ static int	parse_color(void *content)
 void	parse_map_colors(t_map *map)
 {
 	t_list	*line;
+	int		count;
 
+	count = 0;
 	line = map->mapfile;
 	while (line)
 	{
-		if (line->content)
+		if (line->content && count < 2)
 		{
 			if (!ft_strncmp((char *)line->content, "C", 1))
-				map->color_ceiling = parse_color(line->content);
+				map->color_ceiling = parse_color(line->content, &count);
 			else if (!ft_strncmp((char *)line->content, "F", 1))
-				map->color_floor = parse_color(line->content);
+				map->color_floor = parse_color(line->content, &count);
+		}
+		else if (line->content)
+		{
+			if (!ft_strncmp((char *)line->content, "C", 1))
+				map->color_ceiling = -1;
+			else if (!ft_strncmp((char *)line->content, "F", 1))
+				map->color_floor = -1;
 		}
 		line = line->next;
 	}

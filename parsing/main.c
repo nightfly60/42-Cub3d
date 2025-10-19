@@ -6,7 +6,7 @@
 /*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 11:25:25 by edurance          #+#    #+#             */
-/*   Updated: 2025/10/19 13:27:40 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/10/19 16:39:27 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,11 @@ int main(void)
 	map = malloc(sizeof(t_map));
 	map->mapfile = NULL;
 	get_filemap("test.cub", map);
+	map->color_floor = -1;
+	map->color_ceiling = -1;
 	parse_map_colors(map);
 	parse_map_textures(map);
 	ft_lstiter(map->mapfile, print_list);
-	map->color_floor = -1;
-	map->color_ceiling = -1;
 	printf("colors: F = %d et C = %d\n", map->color_floor, map->color_ceiling);
 	printf("NO = %s\nSO =%s\nEA = %s\nWE = %s\n", map->text_north, map->text_south, map->text_east, map->text_west);
 	ft_lstclear(&map->mapfile, free);
