@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 14:44:14 by edurance          #+#    #+#             */
-/*   Updated: 2025/10/19 13:23:33 by edurance         ###   ########.fr       */
+/*   Updated: 2025/10/19 16:27:14 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,19 @@
 # include <float.h>
 # include <math.h>
 # include <stdio.h>
+# include <stdlib.h>
 # include <sys/time.h>
+
+typedef struct s_map
+{
+	t_list		*mapfile;
+	int			color_ceiling;
+	int			color_floor;
+	char		*text_north;
+	char		*text_south;
+	char		*text_east;
+	char		*text_west;
+}				t_map;
 
 typedef struct s_ply
 {
@@ -86,11 +98,6 @@ typedef struct s_textures
 	int			floor_color;
 	int			ceiling_color;
 }				t_textures;
-
-typedef struct s_map
-{
-	t_list		*mapfile;
-}				t_map;
 
 typedef struct s_cub
 {
@@ -153,7 +160,7 @@ void			display_crosshair(t_data *img);
 void			init_textures(t_cub *cube);
 
 /*parsing*/
-int				get_filemap(char *path, t_map *map);
-char			**get_map(t_map *map);
+void			parse_map_colors(t_map *map);
+void			parse_map_textures(t_map *map);
 
 #endif

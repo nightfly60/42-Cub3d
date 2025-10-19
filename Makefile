@@ -14,8 +14,6 @@ UTILS_FILES = utils/ft_color.c utils/ft_drawline.c utils/exit_game.c utils/put_p
 
 KEYS_FILES = keys/ft_key_hook.c keys/ply_directions.c keys/ply_movements.c
 
-PARSING_FILES = parsing/get_filemap.c parsing/get_map.c
-
 LIBFT_SRCS := libft/ft_atoi.c libft/ft_bzero.c libft/ft_calloc.c libft/ft_isalnum.c libft/ft_isalpha.c libft/ft_isascii.c \
 			libft/ft_isdigit.c libft/ft_isprint.c libft/ft_itoa.c libft/ft_memchr.c libft/ft_memcmp.c libft/ft_memcpy.c \
 			libft/ft_memmove.c libft/ft_memset.c libft/ft_putchar_fd.c libft/ft_putendl_fd.c libft/ft_putnbr_fd.c \
@@ -31,7 +29,7 @@ CC = cc
 CFLAGS = -Wall -Werror -Wextra -g3
 OBJ = $(patsubst %.c, $(OBJDIR)/%.o, $(FILES))
 
-FILES = main.c $(MINIMAP_FILES) $(UTILS_FILES) $(KEYS_FILES) $(GAME) $(PARSING_FILES)
+FILES = main.c $(MINIMAP_FILES) $(UTILS_FILES) $(KEYS_FILES) $(GAME)
 
 INCLUDES = includes
 INCLUDE_FILES = includes/cub3d.h
