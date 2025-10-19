@@ -6,7 +6,7 @@
 /*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 10:45:50 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/10/16 10:50:03 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/10/17 11:19:45 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,6 @@ void	display_game_bg(t_cub *cube, t_data *image)
 {
 	int	y;
 
-	y = top_half_color(cube->ceiling_color, image);
-	down_half_color(cube->floor_color, image, y);
+	y = top_half_color(cube->textures->ceiling_color, image);
+	down_half_color(cube->textures->floor_color, image, y);
 }

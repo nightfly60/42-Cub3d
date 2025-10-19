@@ -6,7 +6,7 @@
 /*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 15:40:18 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/10/16 11:25:06 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/10/17 12:48:30 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,14 @@ void	launch_rays(t_cub *cube, t_data *image_minimap, t_data *image_game)
 		ray.ray_dir_y = cube->player->dir_y + ray.plane_y * ray.camera_x;
 		next_wall_dist(cube, image_minimap, &ray);
 		ray.line_height = (int)(SIZE_Y / ray.perp_wall_dist);
-		display_fisheye(&ray, image_game, i);
+		if (ray.side)
+			ray.wall_x = cube->player->pos_x + ray.perp_wall_dist
+				* ray.ray_dir_x;
+		else
+			ray.wall_x = cube->player->pos_y + ray.perp_wall_dist
+				* ray.ray_dir_y;
+		ray.wall_x = ray.wall_x - floorf(ray.wall_x);
+		display_fisheye(&ray, image_game, i, cube);
 		i++;
 	}
 }

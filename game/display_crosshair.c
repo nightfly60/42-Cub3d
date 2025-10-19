@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   display_crosshair.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 12:27:41 by edurance          #+#    #+#             */
-/*   Updated: 2025/10/16 12:38:14 by edurance         ###   ########.fr       */
+/*   Updated: 2025/10/17 12:48:35 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void display_crosshair(t_data *img)
+void	display_crosshair(t_data *img)
 {
-	float a[2];
-	float b[2];
+	float	a[2];
+	float	b[2];
 
 	a[0] = SIZE_X / 2;
 	a[1] = SIZE_Y / 2 - 10;
