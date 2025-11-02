@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ply_movements.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 10:50:30 by edurance          #+#    #+#             */
-/*   Updated: 2025/10/15 15:09:26 by edurance         ###   ########.fr       */
+/*   Updated: 2025/11/02 11:07:03 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,27 +18,20 @@ static void	medial_moves(int key, t_ply *ply, t_cub *cub)
 	float	steps;
 	float	next_x;
 	float	next_y;
+	int		direction;
 
 	steps = 0.1f;
 	if (key == XK_w)
-	{
-		next_x = ply->pos_x + ply->dir_x * steps;
-		next_y = ply->pos_y + ply->dir_y * steps;
-		if (cub->map[(int)(next_y)][(int)next_x] != '1')
-		{
-			ply->pos_x = next_x;
-			ply->pos_y = next_y;
-		}
-	}
+		direction = 1;
 	if (key == XK_s)
+		direction = -1;
+	next_x = ply->pos_x + ply->dir_x * steps * direction;
+	next_y = ply->pos_y + ply->dir_y * steps * direction;
+	if (cub->map[(int)(next_y)][(int)next_x]
+		&& cub->map[(int)(next_y)][(int)next_x] != '1')
 	{
-		next_x = ply->pos_x + ply->dir_x * steps * -1;
-		next_y = ply->pos_y + ply->dir_y * steps * -1;
-		if (cub->map[(int)(next_y)][(int)next_x] != '1')
-		{
-			ply->pos_x = next_x;
-			ply->pos_y = next_y;
-		}
+		ply->pos_x = next_x;
+		ply->pos_y = next_y;
 	}
 }
 
@@ -64,7 +57,8 @@ static void	lateral_moves(int key, t_ply *pl, t_cub *cub)
 		next_x = pl->pos_x - ax * steps;
 		next_y = pl->pos_y - ay * steps;
 	}
-	if (cub->map[(int)(next_y)][(int)next_x] != '1')
+	if (cub->map[(int)(next_y)][(int)next_x]
+		&& cub->map[(int)(next_y)][(int)next_x] != '1')
 	{
 		pl->pos_x = next_x;
 		pl->pos_y = next_y;

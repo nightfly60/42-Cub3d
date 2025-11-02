@@ -6,7 +6,7 @@
 /*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 15:40:18 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/10/19 16:28:09 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/11/02 10:58:57 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,8 @@ static void	next_wall_dist(t_cub *cube, t_data *image, t_ray *ray)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		if (cube->map[ray->map_y][ray->map_x] == '1')
+		if (!cube->map[ray->map_y][ray->map_x]
+			|| cube->map[ray->map_y][ray->map_x] == '1')
 			wall = 1;
 	}
 	display_ray(cube, image, ray);

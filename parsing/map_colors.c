@@ -6,7 +6,7 @@
 /*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 12:25:53 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/10/19 16:53:51 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/11/02 16:07:19 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	parse_map_colors(t_map *map)
 
 	count = 0;
 	line = map->mapfile;
-	while (line)
+	while (line && line != map->map_start)
 	{
 		if (line->content && count < 2)
 		{

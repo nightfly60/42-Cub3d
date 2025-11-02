@@ -43,7 +43,7 @@ LIGHTBLUE = \033[1;94m
 all: $(MLX) $(LIBFT) $(NAME)
 
 $(MLX):
-	@wget https://cdn.intra.42.fr/document/document/35895/minilibx-linux.tgz
+	@wget https://cdn.intra.42.fr/document/document/42054/minilibx-linux.tgz
 	@tar -xf minilibx-linux.tgz
 	@rm minilibx-linux.tgz
 	@mv minilibx-linux mlx_linux

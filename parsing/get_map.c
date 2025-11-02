@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 13:21:24 by edurance          #+#    #+#             */
-/*   Updated: 2025/10/19 15:34:20 by edurance         ###   ########.fr       */
+/*   Updated: 2025/11/02 15:51:31 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,44 +19,36 @@ static int	valid_line(char *line)
 	i = 0;
 	if (ft_strlen(line) <= 1)
 		return (0);
-	while (line[i] && line[i] == ' ')
-		i++;
-	while (line[i] && (line[i] == '1' || line[i] == '\n'))
+	while (line[i] && ft_strchr("10 \nEWNS", line[i]))
 		i++;
 	if (!line[i])
 		return (1);
-	if (line[i])
-	{
-		while (line[i] && line[i] == ' ')
-			i++;
-		if (!line[i] || line[i] == '\n')
-			return (1);
-	}
 	return (0);
 }
 
-static char	**copy_map(t_list *map_start, int size)
+static void	copy_map(t_map *map, int size)
 {
 	int		i;
 	char	**res;
+	t_list	*current_line;
 
 	i = 0;
+	current_line = map->map_start;
 	res = malloc(sizeof(char *) * (size + 1));
-	while (map_start && i < size)
+	while (current_line && i < size)
 	{
-		res[i] = ft_strdup((char *)(map_start)->content);
+		res[i] = ft_strdup((char *)(current_line)->content);
 		i++;
-		map_start = (map_start)->next;
+		current_line = (current_line)->next;
 	}
+	map->map_end = current_line;
 	res[i] = NULL;
-	return (res);
+	map->map = res;
 }
 
-char	**get_map(t_map *map)
+void	get_map(t_map *map)
 {
 	t_list	**filemap;
-	t_list	*map_start;
-	char	**res;
 	int		i;
 
 	i = 0;
@@ -68,7 +60,7 @@ char	**get_map(t_map *map)
 		else
 			break ;
 	}
-	map_start = *filemap;
+	map->map_start = *filemap;
 	while ((*filemap))
 	{
 		if (ft_strlen((char *)(*filemap)->content) <= 1)
@@ -76,6 +68,5 @@ char	**get_map(t_map *map)
 		i++;
 		*filemap = (*filemap)->next;
 	}
-	res = copy_map(map_start, i);
-	return (res);
+	copy_map(map, i);
 }

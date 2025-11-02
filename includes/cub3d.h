@@ -6,7 +6,7 @@
 /*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 14:44:14 by edurance          #+#    #+#             */
-/*   Updated: 2025/10/19 16:27:14 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/11/02 15:51:15 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,9 @@ typedef struct s_map
 	char		*text_south;
 	char		*text_east;
 	char		*text_west;
+	char		**map;
+	t_list		*map_start;
+	t_list		*map_end;
 }				t_map;
 
 typedef struct s_ply
@@ -162,5 +165,9 @@ void			init_textures(t_cub *cube);
 /*parsing*/
 void			parse_map_colors(t_map *map);
 void			parse_map_textures(t_map *map);
+int				get_filemap(char *path, t_map *map);
+void			get_map(t_map *map);
+void			init_map(t_map *map);
+void			exit_map(t_map *map, char *message);
 
 #endif
