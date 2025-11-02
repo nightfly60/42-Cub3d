@@ -6,70 +6,55 @@
 /*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 11:25:25 by edurance          #+#    #+#             */
-/*   Updated: 2025/10/19 16:39:27 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/11/02 16:07:43 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <unistd.h>
 #include "../libft/include/libft.h"
-#include <stdlib.h>
-#include <fcntl.h>
 #include "cub3d.h"
+#include <fcntl.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 
-void print_list(void *content)
+static void	check_all_textures(t_map *map)
 {
-	char *line;
-
-	line = (char *)content;
-	printf("%s", line);
+	if (!map->text_east)
+		exit_map(map, "Texture missing for EAST");
+	if (!map->text_north)
+		exit_map(map, "Texture missing for NORTH");
+	if (!map->text_west)
+		exit_map(map, "Texture missing for WEST");
+	if (!map->text_south)
+		exit_map(map, "Texture missing for SOUTH");
+	if (map->color_ceiling == -1)
+		exit_map(map, "Color missing for CEILING");
+	if (map->color_floor == -1)
+		exit_map(map, "Color missing for FLOOR");
 }
+// void	print_list(void *content)
+// {
+// 	char	*line;
 
-int get_filemap(char *path, t_map *map)
+// 	line = (char *)content;
+// 	printf("%s", line);
+// }
+
+int	main(void)
 {
-	int fd;
-	t_list **filemap;
-	char	*line;
-	int	i;
-	i = 0;
-
-	if (ft_strcmp(&path[ft_strlen(path) - 4], ".cub"))
-	{
-		printf("Bad file name\n");
-		return (1);
-	}
-	filemap = &map->mapfile;
-	fd = open(path, O_RDONLY);
-	if (fd == -1)
-	{
-		printf("Map couldnt open\n");
-		return (1);
-	}
-	line = get_next_line(fd);
-	while (line)
-	{
-		ft_lstadd_back(filemap, ft_lstnew(line));
-		line = get_next_line(fd);
-	}
-	return (0);
-}
-
-int main(void)
-{
-	char **res;
-	t_map *map;
+	t_map	*map;
 
 	map = malloc(sizeof(t_map));
-	map->mapfile = NULL;
+	init_map(map);
 	get_filemap("test.cub", map);
-	map->color_floor = -1;
-	map->color_ceiling = -1;
+	get_map(map);
 	parse_map_colors(map);
 	parse_map_textures(map);
-	ft_lstiter(map->mapfile, print_list);
+	check_all_textures(map);
 	printf("colors: F = %d et C = %d\n", map->color_floor, map->color_ceiling);
-	printf("NO = %s\nSO =%s\nEA = %s\nWE = %s\n", map->text_north, map->text_south, map->text_east, map->text_west);
-	ft_lstclear(&map->mapfile, free);
-	free(map);
+	printf("NO = %s\nSO = %s\nEA = %s\nWE = %s\n", map->text_north,
+		map->text_south, map->text_east, map->text_west);
+	print_str_table(map->map);
+	exit_map(map, NULL);
 	return (0);
 }
