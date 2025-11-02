@@ -6,7 +6,7 @@
 /*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 11:25:25 by edurance          #+#    #+#             */
-/*   Updated: 2025/11/02 16:07:43 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/11/02 16:47:46 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static void	check_all_textures(t_map *map)
 	if (map->color_floor == -1)
 		exit_map(map, "Color missing for FLOOR");
 }
+
 // void	print_list(void *content)
 // {
 // 	char	*line;
@@ -51,6 +52,7 @@ int	main(void)
 	parse_map_colors(map);
 	parse_map_textures(map);
 	check_all_textures(map);
+	check_lines(map);
 	printf("colors: F = %d et C = %d\n", map->color_floor, map->color_ceiling);
 	printf("NO = %s\nSO = %s\nEA = %s\nWE = %s\n", map->text_north,
 		map->text_south, map->text_east, map->text_west);
