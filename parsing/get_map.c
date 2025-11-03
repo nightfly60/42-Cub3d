@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 13:21:24 by edurance          #+#    #+#             */
-/*   Updated: 2025/11/03 12:15:25 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/11/03 13:33:18 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,23 +31,23 @@ static char	*malloc_line(char *line, int len)
 	char	*res;
 	int		i;
 
-	i = 1;
+	i = 0;
 	res = malloc(sizeof(char) * (len + 2));
 	if (!res)
 		return (NULL);
 	res[0] = '2';
 	while (line && line[i] && line[i] != '\n')
 	{
-		res[i] = line[i];
+		res[i + 1] = line[i];
 		i++;
 	}
 	while (i < len - 1)
 	{
-		res[i] = '2';
+		res[i + 1] = '2';
 		i++;
 	}
-	res[i] = '2';
-	res[i + 1] = 0;
+	res[i + 1] = '2';
+	res[i + 2] = 0;
 	return (res);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 11:25:25 by edurance          #+#    #+#             */
-/*   Updated: 2025/11/02 16:47:46 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/11/03 13:40:55 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ static void	check_all_textures(t_map *map)
 int	main(void)
 {
 	t_map	*map;
+	int start_pos[2] = {12, 4};;
 
 	map = malloc(sizeof(t_map));
 	init_map(map);
@@ -57,6 +58,9 @@ int	main(void)
 	printf("NO = %s\nSO = %s\nEA = %s\nWE = %s\n", map->text_north,
 		map->text_south, map->text_east, map->text_west);
 	print_str_table(map->map);
+	printf("\n\n\n");
+	print_str_table(map->map);
+	printf("tout va bien\n");
 	exit_map(map, NULL);
 	return (0);
 }

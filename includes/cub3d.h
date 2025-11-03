@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 14:44:14 by edurance          #+#    #+#             */
-/*   Updated: 2025/11/03 11:56:50 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/11/03 13:27:17 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,5 +170,6 @@ void			get_map(t_map *map);
 void			init_map(t_map *map);
 void			exit_map(t_map *map, char *message);
 void			check_lines(t_map *map);
+int				flood_fill(char **map, int pos[2]);
 
 #endif
