@@ -6,7 +6,7 @@
 /*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 13:19:46 by edurance          #+#    #+#             */
-/*   Updated: 2025/11/02 12:53:21 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/11/02 17:16:11 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	get_filemap(char *path, t_map *map)
 	filemap = &map->mapfile;
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
-	exit_map(map, "Map couldn't open");
+		exit_map(map, "Map couldn't open");
 	line = get_next_line(fd);
 	while (line)
 	{
