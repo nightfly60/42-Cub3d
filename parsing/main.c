@@ -6,7 +6,7 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 11:25:25 by edurance          #+#    #+#             */
-/*   Updated: 2025/11/03 13:40:55 by edurance         ###   ########.fr       */
+/*   Updated: 2025/11/03 14:43:24 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int	main(void)
 		map->text_south, map->text_east, map->text_west);
 	print_str_table(map->map);
 	printf("\n\n\n");
+	closed_map(map);
 	print_str_table(map->map);
 	printf("tout va bien\n");
 	exit_map(map, NULL);

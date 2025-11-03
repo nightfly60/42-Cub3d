@@ -6,7 +6,7 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 12:51:48 by edurance          #+#    #+#             */
-/*   Updated: 2025/11/03 13:48:18 by edurance         ###   ########.fr       */
+/*   Updated: 2025/11/03 14:49:31 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,15 @@ static void	fill_dirs(int dirs[4][2])
 	dirs[3][1] = -1;
 }
 
-int	flood_fill(char **map, int pos[2])
+static int	flood_fill(char **map, int pos[2])
 {
-	int	dirs[4][2];
-	int	next[2];
-	int	i;
+	int			dirs[4][2];
+	int			next[2];
+	int			i;
 	static int	closed = 1;
 
 	fill_dirs(dirs);
-	i = 0;
+	i = -1;
 	if (pos[0] < 0 || pos[1] < 0)
 		return (0);
 	if (map[pos[0]][pos[1]] == '1' || map[pos[0]][pos[1]] == 'X')
@@ -44,7 +44,7 @@ int	flood_fill(char **map, int pos[2])
 		return (0);
 	}
 	map[pos[0]][pos[1]] = 'X';
-	while (i++ < 4)
+	while (++i < 4)
 	{
 		next[0] = pos[0] + dirs[i][0];
 		next[1] = pos[1] + dirs[i][1];
@@ -56,7 +56,7 @@ int	flood_fill(char **map, int pos[2])
 
 void	closed_map(t_map *map)
 {
-	int		start_pos[2] = {14, 4};
+	int		start_pos[2] = {12, 4};
 	int		i;
 	int		j;
 	char	**maptable;
@@ -77,4 +77,6 @@ void	closed_map(t_map *map)
 		}
 		i++;
 	}
+	ft_freeall(map->map);
+	get_map(map);
 }
