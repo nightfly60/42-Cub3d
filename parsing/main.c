@@ -6,7 +6,7 @@
 /*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 11:25:25 by edurance          #+#    #+#             */
-/*   Updated: 2025/11/02 16:47:46 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/11/03 13:28:52 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@ int	main(void)
 	init_map(map);
 	get_filemap("test.cub", map);
 	get_map(map);
+	check_all_char(map);
+	get_spawn_pos(map);
+	check_map_size(map);
 	parse_map_colors(map);
 	parse_map_textures(map);
 	check_all_textures(map);
@@ -56,6 +59,7 @@ int	main(void)
 	printf("colors: F = %d et C = %d\n", map->color_floor, map->color_ceiling);
 	printf("NO = %s\nSO = %s\nEA = %s\nWE = %s\n", map->text_north,
 		map->text_south, map->text_east, map->text_west);
+	printf("spawn = {%d;%d}\n", map->start_x, map->start_y);
 	print_str_table(map->map);
 	exit_map(map, NULL);
 	return (0);

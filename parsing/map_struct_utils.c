@@ -6,7 +6,7 @@
 /*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 12:08:07 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/11/02 15:47:15 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/11/03 13:05:07 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	init_map(t_map *map)
 	map->map = NULL;
 	map->map_start = NULL;
 	map->map_end = NULL;
+	map->start_x = -1;
+	map->start_y = -1;
 }
 
 void	exit_map(t_map *map, char *message)

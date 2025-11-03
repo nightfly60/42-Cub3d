@@ -6,7 +6,7 @@
 /*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 14:44:14 by edurance          #+#    #+#             */
-/*   Updated: 2025/11/03 11:56:50 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/11/03 13:28:31 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,10 @@ typedef struct s_map
 	char		**map;
 	t_list		*map_start;
 	t_list		*map_end;
+	int			start_x;
+	int			start_y;
+	int			longest_line;
+	int			lines_numbers;
 }				t_map;
 
 typedef struct s_ply
@@ -170,5 +174,8 @@ void			get_map(t_map *map);
 void			init_map(t_map *map);
 void			exit_map(t_map *map, char *message);
 void			check_lines(t_map *map);
+void			check_all_char(t_map *map);
+void			get_spawn_pos(t_map *map);
+void			check_map_size(t_map *map);
 
 #endif

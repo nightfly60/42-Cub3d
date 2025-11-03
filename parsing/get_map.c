@@ -6,7 +6,7 @@
 /*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 13:21:24 by edurance          #+#    #+#             */
-/*   Updated: 2025/11/03 12:15:25 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/11/03 13:26:06 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@ static char	*malloc_line(char *line, int len)
 	res[0] = '2';
 	while (line && line[i] && line[i] != '\n')
 	{
-		res[i] = line[i];
+		if (line[i] != ' ')
+			res[i] = line[i];
+		else
+			res[i] = '1';
 		i++;
 	}
 	while (i < len - 1)
@@ -64,6 +67,7 @@ static int	get_longest_line(t_map *map)
 			longest_line = ft_strlen((char *)current_line->content);
 		current_line = current_line->next;
 	}
+	map->longest_line = longest_line;
 	return (longest_line);
 }
 
