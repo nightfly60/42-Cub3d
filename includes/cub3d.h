@@ -6,7 +6,7 @@
 /*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 14:44:14 by edurance          #+#    #+#             */
-/*   Updated: 2025/11/03 13:28:31 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/11/03 14:53:49 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,5 +177,6 @@ void			check_lines(t_map *map);
 void			check_all_char(t_map *map);
 void			get_spawn_pos(t_map *map);
 void			check_map_size(t_map *map);
+void			closed_map(t_map *map);
 
 #endif

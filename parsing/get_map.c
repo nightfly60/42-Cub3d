@@ -6,7 +6,7 @@
 /*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 13:21:24 by edurance          #+#    #+#             */
-/*   Updated: 2025/11/03 13:26:06 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/11/03 14:55:23 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static char	*malloc_line(char *line, int len)
 	char	*res;
 	int		i;
 
-	i = 1;
+	i = 0;
 	res = malloc(sizeof(char) * (len + 2));
 	if (!res)
 		return (NULL);
@@ -39,18 +39,18 @@ static char	*malloc_line(char *line, int len)
 	while (line && line[i] && line[i] != '\n')
 	{
 		if (line[i] != ' ')
-			res[i] = line[i];
+			res[i + 1] = line[i];
 		else
-			res[i] = '1';
+			res[i + 1] = '1';
 		i++;
 	}
 	while (i < len - 1)
 	{
-		res[i] = '2';
+		res[i + 1] = '2';
 		i++;
 	}
-	res[i] = '2';
-	res[i + 1] = 0;
+	res[i + 1] = '2';
+	res[i + 2] = 0;
 	return (res);
 }
 
