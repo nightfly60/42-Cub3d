@@ -6,7 +6,7 @@
 /*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 12:51:48 by edurance          #+#    #+#             */
-/*   Updated: 2025/11/03 14:54:29 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/11/03 16:21:54 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,13 @@ static int	flood_fill(char **map, int pos[2])
 
 void	closed_map(t_map *map)
 {
-	int		start_pos[2] = {12, 4};
+	int		start_pos[2];
 	int		i;
 	int		j;
 	char	**maptable;
 
+	start_pos[0] = map->start_y;
+	start_pos[1] = map->start_x;
 	if (!flood_fill(map->map, start_pos))
 		exit_map(map, "The map is not closed: Invalid map");
 	i = 0;

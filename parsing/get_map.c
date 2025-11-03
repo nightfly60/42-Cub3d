@@ -6,7 +6,7 @@
 /*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 13:21:24 by edurance          #+#    #+#             */
-/*   Updated: 2025/11/03 14:55:23 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/11/03 15:32:11 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ static char	*malloc_line(char *line, int len)
 
 static int	get_longest_line(t_map *map)
 {
-	t_list	*current_line;
-	int		longest_line;
+	t_list			*current_line;
+	unsigned long	longest_line;
 
 	current_line = map->map_start;
 	longest_line = ft_strlen((char *)current_line->content);
@@ -67,8 +67,8 @@ static int	get_longest_line(t_map *map)
 			longest_line = ft_strlen((char *)current_line->content);
 		current_line = current_line->next;
 	}
-	map->longest_line = longest_line;
-	return (longest_line);
+	map->longest_line = (int)longest_line;
+	return ((int)longest_line);
 }
 
 static void	copy_map(t_map *map, int size)

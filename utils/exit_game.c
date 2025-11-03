@@ -6,7 +6,7 @@
 /*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 11:27:07 by edurance          #+#    #+#             */
-/*   Updated: 2025/10/19 16:28:18 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/11/03 16:18:51 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,13 @@ void	exit_game(t_cub *cub)
 		mlx_destroy_window(cub->mlx, cub->mlx_window_game);
 	if (cub->mlx)
 		mlx_destroy_display(cub->mlx);
+	exit_map(cub->map_struct, NULL);
 	free(cub->player);
 	free(cub->path_east);
 	free(cub->path_south);
 	free(cub->path_north);
 	free(cub->path_west);
 	free(cub->textures);
-	ft_freeall(cub->map);
 	free(cub->mlx);
 	free(cub->fps);
 	free(cub);

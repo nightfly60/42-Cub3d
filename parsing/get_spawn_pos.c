@@ -6,13 +6,13 @@
 /*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 13:05:24 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/11/03 13:13:04 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/11/03 15:41:29 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	is_in(char c, char *dict)
+static int	is_in(char c, char *dict, t_map *map)
 {
 	int	i;
 
@@ -20,7 +20,10 @@ static int	is_in(char c, char *dict)
 	while (dict[i])
 	{
 		if (c == dict[i])
+		{
+			map->start_dir = c;
 			return (1);
+		}
 		i++;
 	}
 	return (0);
@@ -39,7 +42,7 @@ void	get_spawn_pos(t_map *map)
 		j = 0;
 		while (table[i][j])
 		{
-			if (is_in(table[i][++j], "NSEW"))
+			if (is_in(table[i][++j], "NSEW", map))
 			{
 				if (map->start_x == -1 && map->start_y == -1)
 				{

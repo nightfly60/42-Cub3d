@@ -6,7 +6,7 @@
 /*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 11:16:34 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/10/19 10:28:29 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/11/03 16:01:16 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static void	init_null(t_cub *cube)
 	cube->path_west = NULL;
 	cube->path_north = NULL;
 	cube->path_south = NULL;
+	cube->map_struct = NULL;
 }
 
 static void	create_text_struct(t_cub *cube)
@@ -36,7 +37,6 @@ static void	create_text_struct(t_cub *cube)
 	cube->textures->west = NULL;
 	cube->textures->south = NULL;
 	cube->textures->north = NULL;
-	init_textures(cube);
 }
 
 static void	create_player_struct(t_cub *cube)
@@ -46,21 +46,19 @@ static void	create_player_struct(t_cub *cube)
 		exit_game(cube);
 }
 
-void	init_game(t_cub *cube, char **av)
+void	init_game(t_cub *cube, t_map *map)
 {
 	init_null(cube);
+	cube->map_struct = map;
 	cube->minimap_sizex = SIZE_X * 0.25;
 	cube->minimap_sizey = SIZE_Y * 0.25;
 	cube->fps = ft_itoa(0);
-	create_map(cube, av[1]);
 	cube->mlx = mlx_init();
 	cube->mlx_window_game = mlx_new_window(cube->mlx, SIZE_X, SIZE_Y, "cub3D");
-	cube->path_east = ft_strdup("./textures/east.xpm");
-	cube->path_west = ft_strdup("./textures/west.xpm");
-	cube->path_north = ft_strdup("./textures/north.xpm");
-	cube->path_south = ft_strdup("./textures/south.xpm");
 	create_player_struct(cube);
 	create_text_struct(cube);
+	link_map(map, cube);
+	init_textures(cube);
 	init_player_data(cube);
 	mlx_hook(cube->mlx_window_game, KeyPress, KeyPressMask, key_hooks, cube);
 	mlx_hook(cube->mlx_window_game, MotionNotify, PointerMotionMask,

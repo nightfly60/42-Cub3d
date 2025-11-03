@@ -6,7 +6,7 @@
 /*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 12:58:29 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/11/03 13:25:16 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/11/03 16:09:18 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,5 @@ void	check_all_char(t_map *map)
 		}
 		i++;
 	}
-	map->lines_numbers = i - 2;
+	map->lines_numbers = i;
 }

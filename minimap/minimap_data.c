@@ -6,7 +6,7 @@
 /*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 11:12:12 by edurance          #+#    #+#             */
-/*   Updated: 2025/10/19 16:27:38 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/11/03 16:05:42 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,32 +68,4 @@ void	get_mapdata_display(t_cub *cub)
 		cub->map_y = 0;
 		cub->mapcub_size = cub_x;
 	}
-}
-
-/*creer le char ** avec la map*/
-void	create_map(t_cub *cube, char *mapfile)
-{
-	int		fd;
-	char	*line;
-	int		i;
-
-	i = 0;
-	if (get_mapsize(mapfile, cube))
-		exit_game(cube);
-	cube->map = malloc(sizeof(char *) * (cube->nb_lines + 1));
-	if (!cube->map)
-		exit_game(cube);
-	fd = open(mapfile, O_RDONLY);
-	if (fd == -1)
-		exit_game(cube);
-	line = get_next_line(fd);
-	while (line)
-	{
-		line[ft_strlen(line) - 1] = 0;
-		cube->map[i] = line;
-		i++;
-		line = get_next_line(fd);
-	}
-	cube->map[i] = NULL;
-	close(fd);
 }
