@@ -3,23 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_key_hook.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 14:26:37 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/10/14 13:10:30 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/11/04 12:11:00 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	ft_key_hook(t_win_list *win, int (*funct)(), void *param)
-{
-	win->hooks[KeyPress].hook = funct;
-	win->hooks[KeyPress].param = param;
-	win->hooks[KeyPress].mask = KeyPressMask;
-	return (0);
-}
-
+/*Recup la key qui a ete press et la traite*/
 int	key_hooks(int key, t_cub *cube)
 {
 	t_ply	*ply;

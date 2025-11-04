@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_colors.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 12:25:53 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/11/02 16:07:19 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/11/04 12:06:25 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ static int	parse_color(void *content, int *count)
 	return (res);
 }
 
+/*Sauve et check les couleurs*/
 void	parse_map_colors(t_map *map)
 {
 	t_list	*line;

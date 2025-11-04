@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   display_game.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 16:12:56 by edurance          #+#    #+#             */
-/*   Updated: 2025/10/19 16:28:51 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/11/04 11:58:31 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/*Fonction principale pour afficher le jeu a chaque frame*/
 int	display_game(t_cub *cube)
 {
 	t_data	map;
@@ -28,7 +29,7 @@ int	display_game(t_cub *cube)
 	map.addr = mlx_get_data_addr(map.img, &map.bpp, &map.l_line, &map.end);
 	game.addr = mlx_get_data_addr(game.img, &game.bpp, &game.l_line, &game.end);
 	map_background(cube, &map);
-	map_player(cube, &map, 5);
+	map_player(cube, &map, cube->mapcub_size / 2);
 	display_game_bg(cube, &game);
 	launch_rays(cube, &map, &game);
 	display_crosshair(&game);

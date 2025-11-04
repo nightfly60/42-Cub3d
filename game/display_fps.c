@@ -6,12 +6,13 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:54:53 by edurance          #+#    #+#             */
-/*   Updated: 2025/10/15 17:55:33 by edurance         ###   ########.fr       */
+/*   Updated: 2025/11/04 11:57:35 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/*Recuperer la timestamp actuelle en ms*/
 static long	get_timestamp(void)
 {
 	struct timeval	time;
@@ -21,6 +22,7 @@ static long	get_timestamp(void)
 	return ((long)(time.tv_sec * 1000 + time.tv_usec / 1000));
 }
 
+/*Afficher les FPS en haut a droite de l'ecran toutes les secondes*/
 void	display_fps(t_cub *cube)
 {
 	static int	fps = 0;

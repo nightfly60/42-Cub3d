@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   map_textures.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 12:44:40 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/11/02 16:07:13 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/11/04 12:08:22 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include <fcntl.h>
 
 static int	can_open(char *file, t_map *map)
 {
@@ -59,6 +58,7 @@ static int	parse_texture(void *content, char **text_ptr, t_map *map)
 	return (1);
 }
 
+/*Recup les textures et verifie qu'elles sont correctes*/
 void	parse_map_textures(t_map *map)
 {
 	t_list	*line;

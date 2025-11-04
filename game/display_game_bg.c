@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display_game_bg.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 10:45:50 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/10/17 11:19:45 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/11/04 11:58:09 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ static void	down_half_color(int color, t_data *image, int y)
 	}
 }
 
+/*Separer le fond en deux parties : plafond et sol pour les colorer*/
 void	display_game_bg(t_cub *cube, t_data *image)
 {
 	int	y;

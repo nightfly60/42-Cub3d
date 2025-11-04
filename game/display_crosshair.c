@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   display_crosshair.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 12:27:41 by edurance          #+#    #+#             */
-/*   Updated: 2025/10/17 12:48:35 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/11/04 11:55:56 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/*Afficher le crosshair*/
 void	display_crosshair(t_data *img)
 {
 	float	a[2];

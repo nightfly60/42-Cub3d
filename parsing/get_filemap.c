@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_filemap.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 13:19:46 by edurance          #+#    #+#             */
-/*   Updated: 2025/11/02 17:16:11 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/11/04 12:03:57 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/*Verifie la conformite du fichier map.cub et la sauve dans une liste chainee*/
 int	get_filemap(char *path, t_map *map)
 {
 	int		fd;

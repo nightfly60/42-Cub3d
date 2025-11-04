@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parsing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 11:25:25 by edurance          #+#    #+#             */
-/*   Updated: 2025/11/03 15:25:48 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/11/04 12:07:14 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static void	check_all_textures(t_map *map)
 		exit_map(map, "Color missing for FLOOR");
 }
 
+/*Fonction principale pour lancer le parsing de la map et recup les infos*/
 void	map_parsing(t_map *map, char *filemap)
 {
 	init_map(map);

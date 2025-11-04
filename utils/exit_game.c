@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 11:27:07 by edurance          #+#    #+#             */
-/*   Updated: 2025/11/03 16:18:51 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/11/04 10:54:27 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,6 @@ void	exit_game(t_cub *cub)
 	free(cub->mlx);
 	free(cub->fps);
 	free(cub);
-	printf("And thanks for all the fish!\n");
+	ft_putstr_fd("And thanks for all the fish!\n", 1);
 	exit(0);
 }

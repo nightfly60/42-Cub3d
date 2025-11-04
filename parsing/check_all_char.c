@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   check_all_char.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 12:58:29 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/11/03 16:09:18 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/11/04 12:01:05 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/*ft_strchr de Anas*/
 static int	is_in(char c, char *dict)
 {
 	int	i;
@@ -26,6 +27,7 @@ static int	is_in(char c, char *dict)
 	return (0);
 }
 
+/*Check si il ya un char invalide dans la map*/
 void	check_all_char(t_map *map)
 {
 	int		i;

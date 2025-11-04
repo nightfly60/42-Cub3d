@@ -44,6 +44,7 @@ YELLOW = \033[1;90m
 LIGHTBLUE = \033[1;94m
 
 all: $(MLX) $(LIBFT) $(NAME)
+	@echo "$(GREEN) 🧊 cub3D Compiled$(RESET)"
 
 $(MLX):
 	@wget https://cdn.intra.42.fr/document/document/42054/minilibx-linux.tgz
@@ -54,23 +55,25 @@ $(MLX):
 	@echo "$(YELLOW) 🔨 MinilibX Configured$(RESET)"
 
 $(LIBFT): $(LIBFT_SRCS)
-	$(MAKE) --no-print-directory -C $(LIBFT_DIR)
+	@$(MAKE) --no-print-directory -C $(LIBFT_DIR)
 
 $(NAME): $(OBJ) $(LIBFT)
-	$(CC) $(CFLAGS) -o $@ $(OBJ) -Lmlx_linux -lmlx -lXext -lX11 -lm -lz -L$(LIBFT_DIR) -lft
+	@$(CC) $(CFLAGS) -o $@ $(OBJ) -Lmlx_linux -lmlx -lXext -lX11 -lm -lz -L$(LIBFT_DIR) -lft
 
 $(OBJDIR)/%.o: %.c $(INCLUDE_FILES)
-	mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) -I $(INCLUDES) -c $< -o $@
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) -I $(INCLUDES) -c $< -o $@
 
 clean:
-	rm -rf $(OBJDIR)
-	$(MAKE) --no-print-directory -C $(LIBFT_DIR) clean
+	@rm -rf $(OBJDIR)
+	@$(MAKE) --no-print-directory -C $(LIBFT_DIR) clean
+	@echo "$(RED) 🧹 cub3D cleaned$(RESET)"
 
 fclean: clean
-	rm -f $(NAME)
-	rm -f $(BNAME)
-	$(MAKE) --no-print-directory -C $(LIBFT_DIR) fclean
+	@rm -f $(NAME)
+	@rm -f $(BNAME)
+	@$(MAKE) --no-print-directory -C $(LIBFT_DIR) fclean
+	@echo "$(LIGHTBLUE) 🌊 cub3D executable deleted$(RESET)"
 
 re: fclean all
 

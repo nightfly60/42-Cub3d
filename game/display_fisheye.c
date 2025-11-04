@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   display_fisheye.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 16:28:08 by edurance          #+#    #+#             */
-/*   Updated: 2025/10/19 16:28:44 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/11/04 11:56:48 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+/*Afficher les textures sur les murs en fonction de leur direction*/
 
 static void	display_north(t_ray *ray, t_cub *cube, int x, t_data *image)
 {
@@ -88,6 +90,7 @@ static void	display_west(t_ray *ray, t_cub *cube, int x, t_data *image)
 	}
 }
 
+/*Fonction pour le raycasting*/
 void	display_fisheye(t_ray *ray, t_data *image, int x, t_cub *cube)
 {
 	ray->draw_start = (float)((-1 * ray->line_height) / 2 + SIZE_Y / 2);

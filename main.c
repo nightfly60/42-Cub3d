@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 14:41:41 by edurance          #+#    #+#             */
-/*   Updated: 2025/11/03 16:08:06 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/11/04 11:42:53 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,27 @@ void	link_map(t_map *map, t_cub *cube)
 	cube->player->pos_y = map->start_y + 0.5f;
 }
 
+static int	check_arguments(int ac)
+{
+	if (ac != 2)
+	{
+		ft_putstr_fd("Usage: ./cub3D path_mapfile.cub\n", 1);
+		return (1);
+	}
+	if (SIZE_X > 2560 || SIZE_X < 600 || SIZE_Y > 1440 || SIZE_Y < 400)
+	{
+		ft_putstr_fd("Error: Invalid Resolution\n", 1);
+		return (1);
+	}
+	return (0);
+}
+
 int	main(int ac, char **av)
 {
 	t_cub	*cube;
 	t_map	*map;
 
-	if (ac != 2)
-		return (1);
-	if (SIZE_X > 2000 || SIZE_X < 400 || SIZE_Y > 2000 || SIZE_Y < 400)
+	if (check_arguments(ac))
 		return (1);
 	map = malloc(sizeof(t_map));
 	if (!map)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_image.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 12:41:04 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/11/03 16:12:01 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/11/04 11:00:31 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ void	map_player(t_cub *cube, t_data *image, int ray)
 	int	y_origin;
 	int	dist;
 
-	ray = (ray * cube->minimap_sizex) / 400;
 	x_origin = (int)(cube->player->pos_x * cube->mapcub_size);
 	y_origin = (int)(cube->player->pos_y * cube->mapcub_size);
 	x = (x_origin - ray);

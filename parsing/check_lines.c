@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_lines.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 15:52:45 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/11/02 16:46:38 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/11/04 12:01:58 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static int	valid_line(char *s)
 	return (0);
 }
 
+/*Check si toutes les lignes du fichier map sont valides (textures etc.)*/
 void	check_lines(t_map *map)
 {
 	t_list	*current;

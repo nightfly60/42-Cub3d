@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   map_struct_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 12:08:07 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/11/03 16:02:57 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/11/04 12:07:51 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/*Mets tout a null pour eviter les pb de free et leaks*/
 void	init_map(t_map *map)
 {
 	map->mapfile = NULL;
@@ -28,6 +29,7 @@ void	init_map(t_map *map)
 	map->start_y = -1;
 }
 
+/*Fonction pour exit le programme proprement avec un msg d'erreur*/
 void	exit_map(t_map *map, char *message)
 {
 	if (message)

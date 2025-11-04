@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_key_hook.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 14:26:37 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/10/19 16:28:35 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/11/04 11:59:33 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	key_hooks(int key, t_cub *cube)
 	return (0);
 }
 
+/*hook pour les mouvements de souris (directions)*/
 int	mouse_moves(int x, int y, t_cub *cube)
 {
 	static int	middle_x = SIZE_X / 2;

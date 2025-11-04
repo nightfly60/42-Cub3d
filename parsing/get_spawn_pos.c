@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_spawn_pos.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 13:05:24 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/11/03 15:41:29 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/11/04 12:05:53 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/*25e is in de Anas car il n'aime pas le ft_strchr de la libft*/
 static int	is_in(char c, char *dict, t_map *map)
 {
 	int	i;
@@ -29,6 +30,7 @@ static int	is_in(char c, char *dict, t_map *map)
 	return (0);
 }
 
+/*Recupere la start_pos du joueur (spawn)*/
 void	get_spawn_pos(t_map *map)
 {
 	char	**table;

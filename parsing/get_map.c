@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 13:21:24 by edurance          #+#    #+#             */
-/*   Updated: 2025/11/03 15:32:11 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/11/04 12:04:46 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ static void	copy_map(t_map *map, int size)
 	map->map_end = current_line;
 }
 
+/*Sauve la map dans un char ** */
 void	get_map(t_map *map)
 {
 	t_list	*filemap;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 12:51:48 by edurance          #+#    #+#             */
-/*   Updated: 2025/11/03 16:21:54 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/11/04 12:02:58 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ static int	flood_fill(char **map, int pos[2])
 	return (closed);
 }
 
+/*Flood fill algo pour verifier si la map est bien fermee*/
 void	closed_map(t_map *map)
 {
 	int		start_pos[2];

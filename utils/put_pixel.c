@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   put_pixel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 11:28:03 by edurance          #+#    #+#             */
-/*   Updated: 2025/10/19 16:28:27 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/11/04 12:11:58 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	put_pixel(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
+/*Recupere la couleur d'un pixel a la position x,y dans la texture*/
 int	get_pixel_color(t_data *data, int x, int y)
 {
 	char	*dst;
