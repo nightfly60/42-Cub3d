@@ -6,7 +6,7 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 12:08:07 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/11/04 12:07:51 by edurance         ###   ########.fr       */
+/*   Updated: 2025/11/04 14:53:54 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,13 @@ void	exit_map(t_map *map, char *message)
 		printf("Error\n%s\n", message);
 	ft_lstclear(&map->mapfile, &free);
 	free(map->text_north);
+	map->text_north = NULL;
 	free(map->text_south);
+	map->text_south = NULL;
 	free(map->text_east);
+	map->text_east = NULL;
 	free(map->text_west);
+	map->text_west = NULL;
 	ft_freeall(map->map);
 	free(map);
 	if (message)

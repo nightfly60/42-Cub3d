@@ -6,7 +6,7 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 11:27:07 by edurance          #+#    #+#             */
-/*   Updated: 2025/11/04 10:54:27 by edurance         ###   ########.fr       */
+/*   Updated: 2025/11/04 14:55:38 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,6 @@ void	exit_game(t_cub *cub)
 		mlx_destroy_display(cub->mlx);
 	exit_map(cub->map_struct, NULL);
 	free(cub->player);
-	free(cub->path_east);
-	free(cub->path_south);
-	free(cub->path_north);
-	free(cub->path_west);
 	free(cub->textures);
 	free(cub->mlx);
 	free(cub->fps);

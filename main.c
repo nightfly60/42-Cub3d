@@ -6,7 +6,7 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 14:41:41 by edurance          #+#    #+#             */
-/*   Updated: 2025/11/04 11:42:53 by edurance         ###   ########.fr       */
+/*   Updated: 2025/11/04 15:07:24 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,7 @@ int	main(int ac, char **av)
 	map_parsing(map, av[1]);
 	cube = malloc(sizeof(t_cub));
 	if (!cube)
-	{
 		exit_map(map, "Malloc failed for cube struct");
-		return (0);
-	}
 	init_game(cube, map);
 	mlx_loop_hook(cube->mlx, display_game, cube);
 	mlx_loop(cube->mlx);

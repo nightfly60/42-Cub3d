@@ -6,7 +6,7 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 14:44:14 by edurance          #+#    #+#             */
-/*   Updated: 2025/11/04 11:39:51 by edurance         ###   ########.fr       */
+/*   Updated: 2025/11/04 14:48:16 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 # define CUB3D_H
 
 # ifndef SIZE_X
-#  define SIZE_X 2560
+#  define SIZE_X 1920
 # endif
 
 # ifndef SIZE_Y
-#  define SIZE_Y 1440
+#  define SIZE_Y 1080
 # endif
 
 # ifndef M_PI

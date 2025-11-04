@@ -6,7 +6,7 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 13:21:24 by edurance          #+#    #+#             */
-/*   Updated: 2025/11/04 12:04:46 by edurance         ###   ########.fr       */
+/*   Updated: 2025/11/04 15:05:50 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	valid_line(char *line)
 	return (0);
 }
 
-static char	*malloc_line(char *line, int len)
+static char	*malloc_line(char *line, int len, t_map *map)
 {
 	char	*res;
 	int		i;
@@ -34,7 +34,7 @@ static char	*malloc_line(char *line, int len)
 	i = 0;
 	res = malloc(sizeof(char) * (len + 2));
 	if (!res)
-		return (NULL);
+		exit_map(map, "Malloc failed");
 	res[0] = '2';
 	while (line && line[i] && line[i] != '\n')
 	{
@@ -82,16 +82,16 @@ static void	copy_map(t_map *map, int size)
 	longest_line = get_longest_line(map);
 	current_line = map->map_start;
 	current_line = map->map_start;
-	res = malloc(sizeof(char *) * (size + 3));
+	res = ft_calloc((size + 3), sizeof(char *));
 	if (!res)
 		return ;
-	res[0] = malloc_line(NULL, longest_line);
+	res[0] = malloc_line(NULL, longest_line, map);
 	while (current_line && i < size + 1)
 	{
-		res[i++] = malloc_line((char *)(current_line)->content, longest_line);
+		res[i++] = malloc_line((char *)(current_line)->content, longest_line, map);
 		current_line = (current_line)->next;
 	}
-	res[i] = malloc_line(NULL, longest_line);
+	res[i] = malloc_line(NULL, longest_line, map);
 	res[i + 1] = NULL;
 	map->map = res;
 	map->map_end = current_line;
@@ -121,4 +121,6 @@ void	get_map(t_map *map)
 		filemap = filemap->next;
 	}
 	copy_map(map, i);
+	if (!map->map)
+		exit_map(map, "Map Invalid");
 }
