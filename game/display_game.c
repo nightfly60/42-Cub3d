@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display_game.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 16:12:56 by edurance          #+#    #+#             */
-/*   Updated: 2025/11/04 11:58:31 by edurance         ###   ########.fr       */
+/*   Updated: 2025/11/04 16:56:31 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	display_game(t_cub *cube)
 	launch_rays(cube, &map, &game);
 	display_crosshair(&game);
 	mlx_put_image_to_window(cube->mlx, cube->mlx_window_game, game.img, 0, 0);
-	mlx_put_image_to_window(cube->mlx, cube->mlx_window_game, map.img, 9, 9);
+	mlx_put_image_to_window(cube->mlx, cube->mlx_window_game, map.img, 10, 10);
 	display_fps(cube);
 	mlx_destroy_image(cube->mlx, map.img);
 	mlx_destroy_image(cube->mlx, game.img);

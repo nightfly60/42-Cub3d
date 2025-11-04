@@ -8,7 +8,7 @@ LIBFT := $(LIBFT_DIR)/libft.a
 MINIMAP_FILES = minimap/minimap_data.c minimap/position_data.c minimap/create_image.c minimap/update_player_data.c
 
 PARSING = parsing/map_colors.c parsing/map_textures.c parsing/get_filemap.c parsing/check_lines.c parsing/check_all_char.c \
-		parsing/get_spawn_pos.c parsing/check_size.c parsing/flood_fill.c parsing/get_map.c parsing/map_struct_utils.c parsing/map_parsing.c
+		parsing/get_spawn_pos.c parsing/flood_fill.c parsing/get_map.c parsing/map_struct_utils.c parsing/map_parsing.c
 
 GAME =	game/display_fisheye.c game/display_game.c game/display_fps.c game/display_game_bg.c game/display_crosshair.c \
 		game/init_textures.c

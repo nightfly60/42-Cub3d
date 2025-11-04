@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_colors.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 12:25:53 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/11/04 12:06:25 by edurance         ###   ########.fr       */
+/*   Updated: 2025/11/04 16:07:52 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ static int	check_color(char *color)
 	res = 0;
 	color_tab = ft_split(color, ',');
 	if (!color_tab)
-		return (1);
+		return (-1);
 	if (ft_arrlen(color_tab) != 3)
 	{
 		ft_freeall(color_tab);
-		return (1);
+		return (-1);
 	}
 	num = ft_atoi(color_tab[0]);
 	if (ft_strlen(color_tab[0]) > 4 && (num < 0 || num > 255))
@@ -75,28 +75,40 @@ static int	parse_color(void *content, int *count)
 	return (res);
 }
 
+static char	*str_without_space(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] == ' ')
+		i++;
+	return (&s[i]);
+}
+
 /*Sauve et check les couleurs*/
 void	parse_map_colors(t_map *map)
 {
 	t_list	*line;
 	int		count;
+	char	*without_space;
 
 	count = 0;
 	line = map->mapfile;
-	while (line && line != map->map_start)
+	while (line && line != map->map_start && line->content)
 	{
-		if (line->content && count < 2)
+		without_space = str_without_space((char *)line->content);
+		if (count < 2)
 		{
-			if (!ft_strncmp((char *)line->content, "C", 1))
+			if (!ft_strncmp(without_space, "C", 1))
 				map->color_ceiling = parse_color(line->content, &count);
-			else if (!ft_strncmp((char *)line->content, "F", 1))
+			else if (!ft_strncmp(without_space, "F", 1))
 				map->color_floor = parse_color(line->content, &count);
 		}
-		else if (line->content)
+		else
 		{
-			if (!ft_strncmp((char *)line->content, "C", 1))
+			if (!ft_strncmp(without_space, "C", 1))
 				map->color_ceiling = -1;
-			else if (!ft_strncmp((char *)line->content, "F", 1))
+			else if (!ft_strncmp(without_space, "F", 1))
 				map->color_floor = -1;
 		}
 		line = line->next;

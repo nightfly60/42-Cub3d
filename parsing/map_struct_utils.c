@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_struct_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 12:08:07 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/11/04 14:53:54 by edurance         ###   ########.fr       */
+/*   Updated: 2025/11/04 15:31:10 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,11 @@ void	init_map(t_map *map)
 void	exit_map(t_map *map, char *message)
 {
 	if (message)
-		printf("Error\n%s\n", message);
+	{
+		ft_putstr_fd("Error\n", 2);
+		ft_putstr_fd(message, 2);
+		ft_putchar_fd('\n', 2);
+	}
 	ft_lstclear(&map->mapfile, &free);
 	free(map->text_north);
 	map->text_north = NULL;

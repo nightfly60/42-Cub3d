@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_textures.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 12:44:40 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/11/04 12:08:22 by edurance         ###   ########.fr       */
+/*   Updated: 2025/11/04 15:50:52 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,12 @@ static int	parse_texture(void *content, char **text_ptr, t_map *map)
 		ft_freeall(split);
 		return (0);
 	}
+	if (ft_strcmp(split[0], "NO") && ft_strcmp(split[0], "SO")
+		&& ft_strcmp(split[0], "EA") && ft_strcmp(split[0], "WE"))
+	{
+		ft_freeall(split);
+		return (0);
+	}
 	if (!can_open(split[1], map))
 	{
 		ft_freeall(split);
@@ -58,11 +64,22 @@ static int	parse_texture(void *content, char **text_ptr, t_map *map)
 	return (1);
 }
 
+static char	*str_without_space(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] == ' ')
+		i++;
+	return (&s[i]);
+}
+
 /*Recup les textures et verifie qu'elles sont correctes*/
 void	parse_map_textures(t_map *map)
 {
 	t_list	*line;
 	int		count;
+	char	*whitout_space;
 
 	count = 0;
 	line = map->mapfile;
@@ -70,13 +87,14 @@ void	parse_map_textures(t_map *map)
 	{
 		if (line->content)
 		{
-			if (!ft_strncmp((char *)line->content, "NO", 2))
+			whitout_space = str_without_space((char *)line->content);
+			if (!ft_strncmp(whitout_space, "NO", 2))
 				count += parse_texture(line->content, &map->text_north, map);
-			else if (!ft_strncmp((char *)line->content, "WE", 2))
+			else if (!ft_strncmp(whitout_space, "WE", 2))
 				count += parse_texture(line->content, &map->text_west, map);
-			else if (!ft_strncmp((char *)line->content, "SO", 2))
+			else if (!ft_strncmp(whitout_space, "SO", 2))
 				count += parse_texture(line->content, &map->text_south, map);
-			else if (!ft_strncmp((char *)line->content, "EA", 2))
+			else if (!ft_strncmp(whitout_space, "EA", 2))
 				count += parse_texture(line->content, &map->text_east, map);
 		}
 		line = line->next;

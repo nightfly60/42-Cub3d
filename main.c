@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 14:41:41 by edurance          #+#    #+#             */
-/*   Updated: 2025/11/04 15:07:24 by edurance         ###   ########.fr       */
+/*   Updated: 2025/11/04 17:10:00 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,27 +27,32 @@ void	link_map(t_map *map, t_cub *cube)
 	cube->player->pos_y = map->start_y + 0.5f;
 }
 
-static int	check_arguments(int ac)
+static int	check_arguments(int ac, char **env)
 {
 	if (ac != 2)
 	{
-		ft_putstr_fd("Usage: ./cub3D path_mapfile.cub\n", 1);
+		ft_putstr_fd("Usage: ./cub3D path_mapfile.cub\n", 2);
 		return (1);
 	}
-	if (SIZE_X > 2560 || SIZE_X < 600 || SIZE_Y > 1440 || SIZE_Y < 400)
+	if (SIZE_X > 2560 || SIZE_X < 400 || SIZE_Y > 1440 || SIZE_Y < 400)
 	{
-		ft_putstr_fd("Error: Invalid Resolution\n", 1);
+		ft_putstr_fd("Error: Invalid Resolution\n", 2);
+		return (1);
+	}
+	if (!env[0])
+	{
+		ft_putstr_fd("Why are you trying to play cub3d without env \?\?\n", 2);
 		return (1);
 	}
 	return (0);
 }
 
-int	main(int ac, char **av)
+int	main(int ac, char **av, char **env)
 {
 	t_cub	*cube;
 	t_map	*map;
 
-	if (check_arguments(ac))
+	if (check_arguments(ac, env))
 		return (1);
 	map = malloc(sizeof(t_map));
 	if (!map)

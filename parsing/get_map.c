@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 13:21:24 by edurance          #+#    #+#             */
-/*   Updated: 2025/11/04 15:05:50 by edurance         ###   ########.fr       */
+/*   Updated: 2025/11/04 16:15:19 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static char	*malloc_line(char *line, int len, t_map *map)
 	int		i;
 
 	i = 0;
-	res = malloc(sizeof(char) * (len + 2));
+	res = malloc(sizeof(char) * (len + 3));
 	if (!res)
 		exit_map(map, "Malloc failed");
 	res[0] = '2';
@@ -78,6 +78,8 @@ static void	copy_map(t_map *map, int size)
 	t_list	*current_line;
 	int		longest_line;
 
+	if (!map->map_start)
+		exit_map(map, "Can I get a map please \?");
 	i = 1;
 	longest_line = get_longest_line(map);
 	current_line = map->map_start;
@@ -88,7 +90,8 @@ static void	copy_map(t_map *map, int size)
 	res[0] = malloc_line(NULL, longest_line, map);
 	while (current_line && i < size + 1)
 	{
-		res[i++] = malloc_line((char *)(current_line)->content, longest_line, map);
+		res[i++] = malloc_line((char *)(current_line)->content, longest_line,
+				map);
 		current_line = (current_line)->next;
 	}
 	res[i] = malloc_line(NULL, longest_line, map);

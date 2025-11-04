@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_lines.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 15:52:45 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/11/04 12:01:58 by edurance         ###   ########.fr       */
+/*   Updated: 2025/11/04 17:11:17 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,18 @@
 
 static int	valid_line(char *s)
 {
-	if (!ft_strncmp(s, "NO", 2) || !ft_strncmp(s, "SO", 2))
+	int	i;
+
+	i = 0;
+	while (s[i] == ' ')
+		i++;
+	s = &s[i];
+	if ((!ft_strncmp(s, "NO", 2) || !ft_strncmp(s, "SO", 2)) && s[2] == ' ')
 		return (1);
-	else if (!ft_strncmp(s, "EA", 2) || !ft_strncmp(s, "WE", 2))
+	else if ((!ft_strncmp(s, "EA", 2) || !ft_strncmp(s, "WE", 2))
+		&& s[2] == ' ')
 		return (1);
-	else if (!ft_strncmp(s, "F", 1) || !ft_strncmp(s, "C", 1))
+	else if ((!ft_strncmp(s, "F", 1) || !ft_strncmp(s, "C", 1)) && s[1] == ' ')
 		return (1);
 	else if (!strcmp(s, "\n"))
 		return (1);

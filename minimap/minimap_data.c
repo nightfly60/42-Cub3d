@@ -6,7 +6,7 @@
 /*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 11:12:12 by edurance          #+#    #+#             */
-/*   Updated: 2025/11/03 16:05:42 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/11/04 17:06:11 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,9 @@ void	get_mapdata_display(t_cub *cub)
 
 	cub_x = cub->minimap_sizex / cub->longest_line;
 	cub_y = cub->minimap_sizey / cub->nb_lines;
-	if (cub_x < cub_y)
+	if (cub_x == 0 || cub_y == 0)
+		cub->mapcub_size = 1;
+	else if (cub_x < cub_y)
 	{
 		cub->map_x = 0;
 		cub->map_y = (cub->minimap_sizey - cub_x * cub->nb_lines) / 2;
