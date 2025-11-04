@@ -6,11 +6,19 @@
 /*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 16:12:56 by edurance          #+#    #+#             */
-/*   Updated: 2025/11/04 16:56:31 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/11/04 17:22:20 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static void	print_map(t_cub *cube, t_data *map)
+{
+	if (cube->mapcub_size * cube->longest_line > SIZE_X || cube->mapcub_size
+		* cube->nb_lines > SIZE_Y)
+		return ;
+	mlx_put_image_to_window(cube->mlx, cube->mlx_window_game, map->img, 10, 10);
+}
 
 /*Fonction principale pour afficher le jeu a chaque frame*/
 int	display_game(t_cub *cube)
@@ -34,7 +42,7 @@ int	display_game(t_cub *cube)
 	launch_rays(cube, &map, &game);
 	display_crosshair(&game);
 	mlx_put_image_to_window(cube->mlx, cube->mlx_window_game, game.img, 0, 0);
-	mlx_put_image_to_window(cube->mlx, cube->mlx_window_game, map.img, 10, 10);
+	print_map(cube, &map);
 	display_fps(cube);
 	mlx_destroy_image(cube->mlx, map.img);
 	mlx_destroy_image(cube->mlx, game.img);
