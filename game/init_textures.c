@@ -6,7 +6,7 @@
 /*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 10:53:41 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/10/17 12:18:42 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/11/03 16:05:01 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,8 @@ static t_data	*get_image(t_cub *cube, char *pathname)
 
 void	init_textures(t_cub *cube)
 {
-	cube->textures->ceiling_color = ft_color(0, 100, 200);
-	cube->textures->floor_color = ft_color(200, 100, 0);
 	cube->textures->east = get_image(cube, cube->path_east);
-	free(cube->path_east);
-	cube->path_east = NULL;
 	cube->textures->west = get_image(cube, cube->path_west);
-	free(cube->path_west);
-	cube->path_west = NULL;
 	cube->textures->north = get_image(cube, cube->path_north);
-	free(cube->path_north);
-	cube->path_north = NULL;
 	cube->textures->south = get_image(cube, cube->path_south);
-	free(cube->path_south);
-	cube->path_south = NULL;
 }

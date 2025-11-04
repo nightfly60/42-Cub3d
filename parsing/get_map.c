@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 13:21:24 by edurance          #+#    #+#             */
-/*   Updated: 2025/11/03 13:33:18 by edurance         ###   ########.fr       */
+/*   Updated: 2025/11/03 15:32:11 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@ static char	*malloc_line(char *line, int len)
 	res[0] = '2';
 	while (line && line[i] && line[i] != '\n')
 	{
-		res[i + 1] = line[i];
+		if (line[i] != ' ')
+			res[i + 1] = line[i];
+		else
+			res[i + 1] = '1';
 		i++;
 	}
 	while (i < len - 1)
@@ -53,8 +56,8 @@ static char	*malloc_line(char *line, int len)
 
 static int	get_longest_line(t_map *map)
 {
-	t_list	*current_line;
-	int		longest_line;
+	t_list			*current_line;
+	unsigned long	longest_line;
 
 	current_line = map->map_start;
 	longest_line = ft_strlen((char *)current_line->content);
@@ -64,7 +67,8 @@ static int	get_longest_line(t_map *map)
 			longest_line = ft_strlen((char *)current_line->content);
 		current_line = current_line->next;
 	}
-	return (longest_line);
+	map->longest_line = (int)longest_line;
+	return ((int)longest_line);
 }
 
 static void	copy_map(t_map *map, int size)

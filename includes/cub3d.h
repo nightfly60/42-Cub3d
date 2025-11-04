@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 14:44:14 by edurance          #+#    #+#             */
-/*   Updated: 2025/11/03 14:36:12 by edurance         ###   ########.fr       */
+/*   Updated: 2025/11/03 16:05:54 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 # define CUB3D_H
 
 # ifndef SIZE_X
-#  define SIZE_X 1920
+#  define SIZE_X 1400
 # endif
 
 # ifndef SIZE_Y
-#  define SIZE_Y 1081
+#  define SIZE_Y 800
 # endif
 
 # ifndef M_PI
@@ -47,6 +47,11 @@ typedef struct s_map
 	char		**map;
 	t_list		*map_start;
 	t_list		*map_end;
+	int			start_x;
+	int			start_y;
+	int			longest_line;
+	int			lines_numbers;
+	char		start_dir;
 }				t_map;
 
 typedef struct s_ply
@@ -122,13 +127,13 @@ typedef struct s_cub
 	char		*path_west;
 	t_ply		*player;
 	t_textures	*textures;
+	t_map		*map_struct;
 	char		*fps;
 }				t_cub;
 
 /*minimap*/
 int				get_mapsize(char *mapfile, t_cub *cub);
 void			get_mapdata_display(t_cub *cub);
-void			create_map(t_cub *cube, char *mapfile);
 void			map_background(t_cub *cube, t_data *image);
 void			map_player(t_cub *cube, t_data *image, int ray);
 
@@ -138,7 +143,7 @@ void			put_pixel(t_data *data, int x, int y, int color);
 void			ft_drawline(float *a, float *b, t_data *image, int color);
 void			exit_game(t_cub *cub);
 int				close_game(void *cub);
-void			init_game(t_cub *cube, char **av);
+void			init_game(t_cub *cube, t_map *map);
 int				get_pixel_color(t_data *data, int x, int y);
 
 /*player*/
@@ -170,6 +175,11 @@ void			get_map(t_map *map);
 void			init_map(t_map *map);
 void			exit_map(t_map *map, char *message);
 void			check_lines(t_map *map);
+void			check_all_char(t_map *map);
+void			get_spawn_pos(t_map *map);
+void			check_map_size(t_map *map);
 void			closed_map(t_map *map);
+void			map_parsing(t_map *map, char *filemap);
+void			link_map(t_map *map, t_cub *cube);
 
 #endif

@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*   check_size.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/26 18:27:52 by edurance          #+#    #+#             */
-/*   Updated: 2025/11/03 15:51:49 by aabouyaz         ###   ########.fr       */
+/*   Created: 2025/11/03 13:26:18 by aabouyaz          #+#    #+#             */
+/*   Updated: 2025/11/03 13:28:18 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "cub3d.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+void	check_map_size(t_map *map)
 {
-	t_list	*first;
-	t_list	*temp;
-
-	if (!lst)
-		return ;
-	first = *lst;
-	while (first)
-	{
-		temp = first;
-		first = first->next;
-		ft_lstdelone(temp, del);
-	}
-	*lst = NULL;
+	if (map->longest_line > 200)
+		exit_map(map, "Map is too large");
+	if (map->lines_numbers > 200)
+		exit_map(map, "Map is too long");
 }
