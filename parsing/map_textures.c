@@ -6,21 +6,21 @@
 /*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 12:44:40 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/11/04 15:50:52 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/11/05 10:26:49 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	can_open(char *file, t_map *map)
+static int	can_open(char *file, t_map *map, char **split)
 {
 	int		fd;
 	char	*pathname;
 
 	if (ft_strncmp(file, "./", 2))
 	{
+		ft_freeall(split);
 		exit_map(map, "Invalid format pour texture file");
-		return (0);
 	}
 	pathname = file;
 	if (pathname[ft_strlen(pathname) - 1] == '\n')
@@ -28,8 +28,8 @@ static int	can_open(char *file, t_map *map)
 	fd = open(pathname, O_RDONLY);
 	if (fd == -1)
 	{
+		ft_freeall(split);
 		exit_map(map, "Cannot open texture file");
-		return (0);
 	}
 	close(fd);
 	return (1);
@@ -53,11 +53,7 @@ static int	parse_texture(void *content, char **text_ptr, t_map *map)
 		ft_freeall(split);
 		return (0);
 	}
-	if (!can_open(split[1], map))
-	{
-		ft_freeall(split);
-		return (0);
-	}
+	can_open(split[1], map, split);
 	free(*text_ptr);
 	*text_ptr = ft_strdup(split[1]);
 	ft_freeall(split);

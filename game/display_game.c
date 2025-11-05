@@ -6,7 +6,7 @@
 /*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 16:12:56 by edurance          #+#    #+#             */
-/*   Updated: 2025/11/04 17:22:20 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/11/05 10:42:33 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,19 @@
 
 static void	print_map(t_cub *cube, t_data *map)
 {
-	if (cube->mapcub_size * cube->longest_line > SIZE_X || cube->mapcub_size
-		* cube->nb_lines > SIZE_Y)
-		return ;
-	mlx_put_image_to_window(cube->mlx, cube->mlx_window_game, map->img, 10, 10);
+	static int	display_minimap = -1;
+
+	if (display_minimap == -1)
+	{
+		if (cube->mapcub_size * cube->longest_line > SIZE_X
+			|| cube->mapcub_size * cube->nb_lines > SIZE_Y)
+			display_minimap = 0;
+		else
+			display_minimap = 1;
+	}
+	if (display_minimap)
+		mlx_put_image_to_window(cube->mlx, cube->mlx_window_game, map->img, 10,
+			10);
 }
 
 /*Fonction principale pour afficher le jeu a chaque frame*/

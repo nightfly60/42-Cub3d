@@ -6,7 +6,7 @@
 /*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 14:44:14 by edurance          #+#    #+#             */
-/*   Updated: 2025/11/04 17:22:58 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/11/05 10:31:05 by aabouyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 # define CUB3D_H
 
 # ifndef SIZE_X
-#  define SIZE_X 1920
+#  define SIZE_X 1600
 # endif
 
 # ifndef SIZE_Y
-#  define SIZE_Y 1080
+#  define SIZE_Y 800
 # endif
 
 # ifndef M_PI
