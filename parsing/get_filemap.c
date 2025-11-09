@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_filemap.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 13:19:46 by edurance          #+#    #+#             */
-/*   Updated: 2025/11/04 15:17:00 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/11/09 21:48:45 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,7 @@ int	get_filemap(char *path, t_map *map)
 	int		fd;
 	t_list	**filemap;
 	char	*line;
-	int		i;
 
-	i = 0;
 	if (ft_strcmp(&path[ft_strlen(path) - 4], ".cub"))
 		exit_map(map, "Bad file name");
 	filemap = &map->mapfile;

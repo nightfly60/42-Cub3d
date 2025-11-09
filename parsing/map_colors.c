@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_colors.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabouyaz <aabouyaz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 12:25:53 by aabouyaz          #+#    #+#             */
-/*   Updated: 2025/11/04 16:07:52 by aabouyaz         ###   ########.fr       */
+/*   Updated: 2025/11/09 21:48:25 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,10 @@ static int	check_color(char *color)
 
 static int	parse_color(void *content, int *count)
 {
-	char	*str;
 	char	**split;
 	int		res;
 
 	(*count)++;
-	str = (char *)content;
 	split = ft_split(content, ' ');
 	if (!(!ft_strcmp(split[0], "F") || !ft_strcmp(split[0], "C"))
 		|| ft_arrlen(split) != 2)
