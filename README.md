@@ -18,7 +18,9 @@
 **cub3D** is a 42 graphics project inspired by *Wolfenstein 3D*, one of the first 3D games ever created.  
 The goal is to build a simple 3D game engine using **raycasting**, where the player can explore a maze in first-person view.
 
-![cub3D preview](https://imgur.com/a/oxLlMux)
+<p align="center">
+  <img src="https://i.imgur.com/Ib41t0i.png" alt="cub3D Screenshot" width="600"/>
+</p>
 
 This project introduces **mathematical rendering techniques**, **MiniLibX graphics**, and **real-time user input management**, all coded in pure **C**.
 
@@ -107,7 +109,7 @@ These features enhance immersion and improve gameplay experience, bringing the p
 L’objectif est de concevoir un moteur de jeu 3D simple à l’aide de la technique du **raycasting**, permettant au joueur d’explorer un labyrinthe en vue à la première personne.
 
 <p align="center">
-  <img src="https://imgur.com/a/oxLlMux" alt="cub3D Screenshot" width="600"/>
+  <img src="https://i.imgur.com/Ib41t0i.png" alt="cub3D Screenshot" width="600"/>
 </p>
 
 Ce projet introduit les **bases du rendu mathématique**, la **librairie graphique MiniLibX**, et la **gestion des entrées utilisateur en temps réel**, le tout entièrement codé en **C**.
