@@ -106,9 +106,7 @@ These features enhance immersion and improve gameplay experience, bringing the p
 **cub3D** est un projet graphique de 42 inspiré du jeu *Wolfenstein 3D*, l’un des premiers jeux en pseudo-3D jamais créés.  
 L’objectif est de concevoir un moteur de jeu 3D simple à l’aide de la technique du **raycasting**, permettant au joueur d’explorer un labyrinthe en vue à la première personne.
 
-<p align="center">
-  <img src="https://i.imgur.com/Ib41t0i.png" alt="cub3D Screenshot" width="600"/>
-</p>
+![Gameplay of the game](assets/cub3d_game.gif)
 
 Ce projet introduit les **bases du rendu mathématique**, la **librairie graphique MiniLibX**, et la **gestion des entrées utilisateur en temps réel**, le tout entièrement codé en **C**.
 
